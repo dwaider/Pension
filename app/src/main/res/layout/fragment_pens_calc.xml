@@ -6,19 +6,46 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="60dp">
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_password"
+            android:id="@+id/edPOklad_layout_dolg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/input_password"
+                android:id="@+id/edPOklad_dolg"
+                style="@style/Widget.AppCompat.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_email" />
+                android:hint="@string/pcalc_oklad_dolg" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spPOklad_zvan"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/pcalc_oklad_zavan"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edKalend_layout_visl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edKalendVisl"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:hint="@string/pcalc_calend_visluga" />
 
         </android.support.design.widget.TextInputLayout>
 
