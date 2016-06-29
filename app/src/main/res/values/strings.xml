@@ -53,4 +53,93 @@
     <string name="pcalc_nadb_17B">Неработающим пенсионерам, на иждевенцев (ст.17 б) %s</string>
     <string name="pcalc_nadb_17B_text">Количество иждевенцев (для не работающих)</string>
 
+    <string-array name="pcalc_ar_vid_pensii">
+        <item> Расчет по выслуге</item>
+        <item> Справочник по расчету пенсии и надбавок</item>
+        <item> Дополнение</item>
+    </string-array>
+    <string name="pcalc_pod_zago_vid_pens">Расчет по выслуге</string>
+    <string name="pcalc_pod_zago_help">Справочник по расчету пенсии и надбавок</string>
+    <string name="pcalc_pod_zago_pay">Дополнение</string>
+
+    <string-array name="pcalc_ar_data_pocent_raion">
+        <item>0</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+    </string-array>
+
+    <string-array name="pcalc_ar_data_zvan">
+        <item>рядовой;5000</item>
+        <item>курсант;5000</item>
+        <item>ефрейтор;5500</item>
+        <item>младший;сержант;6000</item>
+        <item>сержант;6500</item>
+        <item>старший сержант;7000</item>
+        <item>старшина;7500</item>
+        <item>прапорщик;8000</item>
+        <item>старший прапорщик;8500</item>
+        <item>младший лейтенант;9500</item>
+        <item>лейтенант;10000</item>
+        <item>старший лейтенант;10500</item>
+        <item>капитан;11000</item>
+        <item>майор;11500</item>
+        <item>подполковник;12000</item>
+        <item>полковник;13000</item>
+        <item>генерал-майор;20000</item>
+        <item>генерал-лейтенант;22000</item>
+        <item>генерал-полковник;25000</item>
+        <item>генерал армии;27000</item>
+    </string-array>
+
+
+    <string-array name="pcalc_ar_data_pocent_for_pensi">
+        <item>c 01.02.2016 года;69.45;4769.09</item>
+        <item>c 01.01.2012 года;54.0;3178.54</item>
+        <item>c 01.01.2013 года;56.0;3626.71</item>
+        <item>c 01.10.2013 года;58.05;3692.35</item>
+        <item>с 01.01.2014 года;60.05;3692.35</item>
+        <item>c 01.10.2014 года;62.12;4323.74</item>
+        <item>c 01.10.2015 года;66.78;4769.09</item>
+    </string-array>
+    <string-array name="pcalc_ar_data_kol_igd">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3 и более</item>
+    </string-array>
+
+    <string name="pcalc_nadb_min_pens">4769.09</string>
+    <string name="pcalc_nadb_100">100</string>
+    <string name="pcalc_nadb_64">64</string>
+    <string name="pcalc_nadb_32">32</string>
+    <string name="pcalc_nadb_16">16</string>
+
+    <string name="pcalc_help_oklad_zvan">Оклад по званию соотвествует званию перед выходом на пенсию.</string>
+    <string name="pcalc_help_oklad_dolg">Должностной оклад соответствует занимаемой должности перед уходом на пенсию. Пенсионеры данную информацию могут уточнить в пенсионном органе где состоят на учете. Действующие сотрудники и военнослужащие в бухгалтерии где получают зарплату.</string>
+    <string name="pcalc_help_kal_or_lgot_visl">Выслуга календарная, если есть льготная то выслугу льготную. (Чем больше выслуга тем больше процент пенсии)</string>
+    <string name="pcalc_help_visl_for_procent_nadbavki">Выслуга для процентной надбавки, обычно она либо равна календарной. (От нее также зависит размер пенсии.)</string>
+    <string name="pcalc_help_procent_for_pensi">Понижающий коэффициент. Денежное довольствие учитываемое при исчислении пенсии с 1 января 2012 г. в размере 54 процентов и начиная с 1 января 2013 г. ежегодно увеличивается. До достижения 100 процентов его размера. С 01.02.2016 года 69.45 процента.</string>
+    <string name="pcalc_help_raion_koeff">ФЗ от 12 февраля 1993 г. № 4468-I Cт. 48 «О пенсионном обеспечении лиц, проходивших военную службу, службу в органах внутренних дел, Государственной противопожарной службе, органах по контролю за оборотом наркотических средств и психотропных веществ, учреждениях и органах уголовно-исполнительной системы, и их семей» - Если пенсионер проживает в районе, где установлен районный коэффициент, то военная пенсия (в том числе повышения и надбавки к военной пенсии) устанавливаются с районным коэффициентом (независимо от того, где проходила служба и где назначалась военная пенсия). Если же пенсионер проживает в районах с нормальными территориальными условиями, то районный коэффициент к военной пенсии сохраняется, только если пенсионер прослужил не менее 15 лет в районах Крайнего Севера или 20 лет в приравненных к ним местностях.</string>
+    <string name="pcalc_help_nadbavka_for_igdev">Надбавка на иждевенцев к пенсии для не работающих пенсионеров. (ст. 17 б).(Для активации требуется дополнение).</string>
+    <string name="pcalc_help_nadbavka_vbd">Надбавка участникам боевых действий. (Имеют удостоверения участника боевых действий).(Для активации требуется дополнение)</string>
+    <string name="pcalc_help_visl_obshe_trud">Выслуга по обще трудовому стажу. Трудовой стаж должен быть 25 календарных лет и более из которых не менее 12 лет шести месяцев составляет военная служба, и (или) служба в органах внутренних дел. На день увольнения Вы достигли  45-летнего возраста. Статьи уволнения : по достижении предельного возраста пребывания на службе, состоянию здоровья или в связи с организационно-штатными мероприятиями.</string>
+
+    <!-- Unlicensed dialog messages -->
+    <string name="unlicensed_dialog_title">Application not licensed</string>
+    <string name="unlicensed_dialog_body">This application is not licensed. Please purchase it from Android Market.</string>
+    <string name="unlicensed_dialog_retry_body">Unable to validate license. Check to see if a network connection is available.</string>
+    <string name="buy_button">Buy app</string>
+    <string name="retry_button">Retry</string>
+    <string name="quit_button">Exit</string>
+
+    <string name="mvd.pension.string.pay_autosave_nadbavki">Данное дополнение позволяет подключить автосохранение выплненного расчета, а также включить в расчет пенсии надбавки на иждевенца и ветерана боевых действий. Покупка этого дополнения единоразовое при дальнейших обновлениях вы получаете дополнительные функции и дальнейшие перерасчеты пенсий согласно Законодательству РФ без ограничений.</string>
+
+    <string name="todo">TODO</string>
+    <string name="allow">Allow the user access</string>
+    <string name="dont_allow">Don\'t allow the user access</string>
+    <string name="mvd.pension.string.help_zago_visl_let">Пенсия за выслугу лет</string>
+
 </resources>
