@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">ПенсияСиловиков</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_pensia_calc">Расчет по выслуге лет</string>
+    <string name="menu_spr_pensia">Справочник</string>
+    <string name="menu_setting">Настройки</string>
+    <string name="menu_setting_dopol">Дополнение</string>
+    <string name="menu_communication">Общение</string>
+    <string name="menu_send">Поделиться</string>
+    <string name="menu_rate">Оценить</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_1">Hello blank fragment 1</string>
+    <string name="hello_blank_fragment_2">Hello blank fragment 2</string>
+    <string name="hello_blank_fragment_3">Hello blank fragment 3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="pcalc_oklad_zavan">Оклад по званию</string>
+    <string name="pcalc_oklad_dolg">Оклад по должности</string>
+    <string name="pcalc_visl_for_procent_nadb">Выслуга лет для % надбавки</string>
+    <string name="pcalc_calend_visluga">Календарная или льготная выслуга</string>
+    <string name="pcalc_visluga_trud">Общий трудовой стаж. 25 лет и более трудового стажа.</string>
+    <string name="pcalc_raschet_visluga_trud">по смешанному стажу</string>
+    <string name="pcalc_result">Расчет</string>
+    <string name="pcalc_result_text">Итого : %s</string>
+    <string name="pcalc_nadb_vet_war">Ветеран боевых действий</string>
+    <string name="pcalc_nadb_raion_koeff">Районный коэффициент (%s%%)</string>
+    <string name="pcalc_nadb_raion_koeff_1">Районный коэффициент</string>
+    <string name="pcalc_procent_for_pensi">% для начисления денежного довольствия</string>
+    <string name="pcalc_nadb_visl_for_pensi">Надбавка за выслугу лет (%s%%)</string>
+    <string name="pcalc_sum_den_dovi">Сумма денежного довольствия</string>
+    <string name="pcalc_den_dovi">Денежное довольствие</string>
+    <string name="pcalc_oklady">Оклады</string>
+    <string name="pcalc_visluga">Выслуга</string>
+    <string name="pcalc_procent_for_ischisl_pensi">% для начисления пенсии</string>
+    <string name="pcalc_nadbavki">Надбавки</string>
+    <string name="pcalc_rashet_pens">Расчет пенсии</string>
+    <string name="pcalc_sum_den_dov_for_isch">Ден.дов. для исчис. пенсии (%s%%)</string>
+    <string name="pcalc_razm_v_procent">Размер пенсии в процентах</string>
+    <string name="pcalc_razm_pensii">Размер пенсии</string>
+    <string name="pcalc_razm_pensii_ural_koff">Размер пенсии с учетом рай.коэф</string>
+    <string name="pcalc_razm_min_pensii">Размер минимальной пенсии</string>
+    <string name="pcalc_nadb">Надбавки</string>
+    <string name="pcalc_nadb_VBD">Ветеран боевых действий (ст.45 г) %s</string>
+    <string name="pcalc_nadb_17B">Неработающим пенсионерам, на иждевенцев (ст.17 б) %s</string>
+    <string name="pcalc_nadb_17B_text">Количество иждевенцев (для не работающих)</string>
+
+</resources>
