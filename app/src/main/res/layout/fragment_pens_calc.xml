@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView" >
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -17,8 +16,23 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/pcalc_oklad_zavan"
+                android:id="@+id/textView" />
+            <Spinner
+                android:id="@+id/spPOklad_zvan"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pcalc_oklad_zavan"
+                android:spinnerMode="dialog" />
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/edPOklad_layout_dolg"
+                android:layout_marginTop="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -30,13 +44,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Spinner
-                android:id="@+id/spPOklad_zvan"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:hint="@string/pcalc_oklad_zavan"
-                android:spinnerMode="dialog" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/edKalend_layout_visl"

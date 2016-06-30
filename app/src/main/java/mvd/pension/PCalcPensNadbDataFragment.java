@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 /**
@@ -26,6 +29,8 @@ public class PCalcPensNadbDataFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private PCalc pens;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,13 +64,67 @@ public class PCalcPensNadbDataFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        pens = PCalc.get(getActivity());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nadb_calc, container, false);
+        View v = inflater.inflate(R.layout.fragment_nadb_calc, container, false);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpRayonKoef());
+        Spinner spNadbRaionKoeff = (Spinner) v.findViewById(R.id.spNadbRaionKoeff);
+        spNadbRaionKoeff.setAdapter(adapter);
+        //загрузка сохраненных данных
+        spNadbRaionKoeff.setSelection(adapter.getPosition(String.valueOf((int)pens.getpRaionKoeffRas())));
+        spNadbRaionKoeff.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // TODO Auto-generated method stub
+                pens.setpRayonKoeff(position);
+                //if (position==1) bayPay();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getDataKolIgdevency());
+        Spinner spKolIgdev = (Spinner) v.findViewById(R.id.spIgdevency);
+        if (!pens.ispBay_save_and_nadbav()) {spKolIgdev.setEnabled(false);}//если куплено
+        else spKolIgdev.setEnabled(true);
+        spKolIgdev.setAdapter(adapter2);
+        spKolIgdev.setSelection(adapter2.getPosition(pens.getKolIgdevencev()));
+        spKolIgdev.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // TODO Auto-generated method stub
+                //попробуем здесь сделать биллинг на рассчет пенсии с учетом
+                pens.setpIgdevency(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+
+
+        MySppinerAdapterForProcentPens adapter1 = new MySppinerAdapterForProcentPens(getActivity(),pens.getpProcentForPensii());
+        Spinner spProcentForPensi = (Spinner) v.findViewById(R.id.spProcentForPensi);
+        spProcentForPensi.setAdapter(adapter1);
+        spProcentForPensi.setSelection(adapter1.getPosition(String.valueOf(pens.getProcentForPensii())));
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
