@@ -76,6 +76,8 @@ public class PCalcPensDataFragment extends Fragment {
 
         // адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpZvanOklad());
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spOkladZvan.setAdapter(adapter);
         //загрузка сохраненных данных
         spOkladZvan.setSelection(adapter.getPosition(pens.getpOkladZvanString()));

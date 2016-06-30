@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#01579B</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="navigationTabColor">#7194e6</color>
+    <color name="colorAccent">#c640ff</color>
+    <color name="navigationTabColor">#0288D1</color>
     <color name="navigationTextColor">#FFFFFF</color>
+    <color name="colorFAB">#1b43a7</color>
+
 </resources>

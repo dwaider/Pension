@@ -14,9 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 	protected abstract Fragment createFragment();
+	private FloatingActionButton fab1;
+	private Animation fab_1_show;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,11 +31,22 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		setSupportActionBar(toolbar);
 
 		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+		fab1 = (FloatingActionButton) findViewById(R.id.fab_1);
+		fab_1_show = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab1_show);
+
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
+				//Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+				//		.setAction("Action", null).show();
+				FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
+				layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
+				layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.25);
+				fab1.setLayoutParams(layoutParams);
+				fab1.startAnimation(fab_1_show);
+				fab1.setClickable(true);
+
 			}
 		});
 
