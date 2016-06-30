@@ -5,48 +5,91 @@
     tools:context="mvd.pension.PСalcPensDataFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp">
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edPOklad_layout_dolg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:id="@+id/scrollView" >
 
-            <EditText
-                android:id="@+id/edPOklad_dolg"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edPOklad_layout_dolg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edPOklad_dolg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/pcalc_oklad_dolg" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spPOklad_zvan"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="@string/pcalc_oklad_zavan"
+                android:spinnerMode="dialog" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edKalend_layout_visl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/pcalc_oklad_dolg" />
+                android:layout_marginTop="24dp">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/edKalendVisl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="@string/pcalc_calend_visluga" />
 
-        <Spinner
-            android:id="@+id/spPOklad_zvan"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:hint="@string/pcalc_oklad_zavan"/>
+            </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edKalend_layout_visl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp">
+            <CheckBox
+                android:id="@+id/chSmeshPens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pcalc_raschet_visluga_trud"
+                android:layout_marginTop="24dp" />
 
-            <EditText
-                android:id="@+id/edKalendVisl"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edObshe_layout_Trud"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="0123456789"
-                android:hint="@string/pcalc_calend_visluga" />
+                android:layout_marginTop="24dp">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/edObsheTrud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:hint="@string/pcalc_visluga_trud"
+                    android:inputType="number|numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
 
-    </LinearLayout>
-
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edPProcent_layout_nadb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp">
+                <EditText
+                    android:id="@+id/edPProcent_nadb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:ems="10"
+                    android:hint="@string/pcalc_visl_for_procent_nadb"
+                    android:inputType="number|numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

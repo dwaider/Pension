@@ -38,14 +38,14 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				//Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-				//		.setAction("Action", null).show();
-				FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-				layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
-				layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.25);
-				fab1.setLayoutParams(layoutParams);
-				fab1.startAnimation(fab_1_show);
-				fab1.setClickable(true);
+				Snackbar.make(view, "ВАША ПЕНСИЯ 10 000 рублей", Snackbar.LENGTH_LONG)
+						.setAction("Action", null).show();
+				//FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
+				//layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
+				//layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.25);
+				//fab1.setLayoutParams(layoutParams);
+				//fab1.startAnimation(fab_1_show);
+				//fab1.setClickable(true);
 
 			}
 		});
