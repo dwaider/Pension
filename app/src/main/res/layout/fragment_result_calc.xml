@@ -4,10 +4,77 @@
     android:layout_height="match_parent"
     tools:context="mvd.pension.PCalcPensResultFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment_3" />
+        android:id="@+id/scrollView" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
+            <TextView
+                android:id="@+id/txSpravochnikVisl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/pcalc_den_dovi"/>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp" >
+
+                <TableRow android:id="@+id/tableRow4" >
+
+                    <TextView
+                        android:id="@+id/txVal"
+                        android:text="@string/pcalc_oklad_dolg"/>
+
+                    <TextView
+                        android:id="@+id/txDolOklad"
+                        android:layout_marginTop="24dp"/>
+                </TableRow>
+
+                <TableRow android:id="@+id/tableRow5" >
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:text="@string/pcalc_oklad_zavan"/>
+
+                    <TextView
+                        android:id="@+id/txZvanOklad"
+                        android:layout_marginTop="24dp" />
+                </TableRow>
+
+                <TableRow android:id="@+id/tableRow6" >
+
+                    <TextView
+                        android:id="@+id/txNameProcNadb"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/pcalc_nadb_visl_for_pensi"/>
+
+                    <TextView
+                        android:id="@+id/txVislProcNadb"/>
+                </TableRow>
+
+                <TableRow android:id="@+id/tableRow7" >
+
+                    <TextView
+                        android:id="@+id/txView7"
+                        style="@style/PCalcTextView"
+                        android:text="@string/pcalc_sum_den_dovi"
+                        android:textSize="@dimen/shrift_size" />
+
+                    <TextView
+                        android:id="@+id/txSumDov"
+                        style="@style/PCalcTextView"
+                        android:textSize="@dimen/shrift_size" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
