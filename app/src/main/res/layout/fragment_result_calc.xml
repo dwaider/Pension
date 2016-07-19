@@ -30,50 +30,157 @@
 
                     <TextView
                         android:id="@+id/txVal"
-                        android:text="@string/pcalc_oklad_dolg"/>
+                        android:text="@string/pcalc_oklad_dolg"
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txDolOklad"
-                        android:layout_marginTop="24dp"/>
+                        android:text="0"
+                        android:layout_weight="1" />
                 </TableRow>
 
-                <TableRow android:id="@+id/tableRow5" >
+                <TableRow android:id="@+id/tableRow5"
+                          android:layout_marginTop="24dp">
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:text="@string/pcalc_oklad_zavan"/>
+                        android:text="@string/pcalc_oklad_zavan"
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txZvanOklad"
-                        android:layout_marginTop="24dp" />
+                        android:text="0"
+                        android:layout_weight="1" />
                 </TableRow>
 
-                <TableRow android:id="@+id/tableRow6" >
+                <TableRow android:id="@+id/tableRow6"
+                          android:layout_marginTop="24dp">
 
                     <TextView
                         android:id="@+id/txNameProcNadb"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/pcalc_nadb_visl_for_pensi"/>
+                        android:text="@string/pcalc_nadb_visl_for_pensi"
+                        android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/txVislProcNadb"/>
+                        android:id="@+id/txVislProcNadb"
+                        android:text="0"
+                        android:layout_weight="1" />
                 </TableRow>
 
-                <TableRow android:id="@+id/tableRow7" >
-
+                <TableRow android:id="@+id/tableRow7"
+                    android:layout_marginTop="24dp">
                     <TextView
                         android:id="@+id/txView7"
-                        style="@style/PCalcTextView"
                         android:text="@string/pcalc_sum_den_dovi"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/txSumDov"
+                        android:text="0"
+                        android:layout_weight="1"/>
+                </TableRow>
+            </TableLayout>
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/pcalc_rashet_pens" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp">
+
+                <TableRow android:id="@+id/TableRow04"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:id="@+id/txNameRaionKoeff"
+                        android:text="@string/pcalc_nadb_raion_koeff"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/txRaionKoeff"
+                        android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow android:id="@+id/TableRow02"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:id="@+id/txDenDovForIsch"
+                        android:text="@string/pcalc_sum_den_dov_for_isch"/>
+
+                    <TextView
+                        android:id="@+id/txDenDovForIschislPensii"/>
+                </TableRow>
+
+                <TableRow android:id="@+id/TableRow01"
+                    android:layout_marginTop="24dp">
+                    <TextView
+                        android:id="@+id/TextView03"
+                        android:text="@string/pcalc_razm_v_procent"
                         android:textSize="@dimen/shrift_size" />
 
                     <TextView
-                        android:id="@+id/txSumDov"
-                        style="@style/PCalcTextView"
-                        android:textSize="@dimen/shrift_size" />
+                        android:id="@+id/txRazmVProcent"/>
+                </TableRow>
+
+                <TableRow android:id="@+id/TableRow06"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView06"
+                        android:text="@string/pcalc_razm_min_pensii"/>
+
+                    <TextView
+                        android:id="@+id/txMinPensii"/>
+                </TableRow>
+
+                <TableRow android:id="@+id/TableRow03"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView05"
+                        android:text="@string/pcalc_razm_pensii"/>
+
+                    <TextView
+                        android:id="@+id/txRasmPensii"/>
+                </TableRow>
+
+                <TableRow android:id="@+id/TableRow05"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView04"
+                        android:text="@string/pcalc_razm_pensii_ural_koff"/>
+
+                    <TextView
+                        android:id="@+id/txRazmUchetRaionKoeff"/>
                 </TableRow>
             </TableLayout>
 
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/pcalc_nadb"/>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:id="@+id/TableRow11"
+                    tools:ignore="UselessParent"
+                    android:layout_marginTop="24dp">
+                    <TextView
+                        android:id="@+id/txNadbavka"/>
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/txItog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/pcalc_result_text"/>
         </LinearLayout>
     </ScrollView>
 
