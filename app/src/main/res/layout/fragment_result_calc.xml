@@ -15,12 +15,21 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp">
+
+            <ExpandableListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/elvDenDov"
+                android:layout_gravity="center_horizontal" />
+
             <TextView
                 android:id="@+id/txSpravochnikVisl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/pcalc_den_dovi"/>
+
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,8 +98,7 @@
                 android:layout_height="wrap_content"
                 android:padding="24dp">
 
-                <TableRow android:id="@+id/TableRow04"
-                    android:layout_marginTop="24dp">
+                <TableRow android:id="@+id/TableRow04">
 
                     <TextView
                         android:id="@+id/txNameRaionKoeff"
@@ -116,8 +124,7 @@
                     android:layout_marginTop="24dp">
                     <TextView
                         android:id="@+id/TextView03"
-                        android:text="@string/pcalc_razm_v_procent"
-                        android:textSize="@dimen/shrift_size" />
+                        android:text="@string/pcalc_razm_v_procent"/>
 
                     <TextView
                         android:id="@+id/txRazmVProcent"/>
