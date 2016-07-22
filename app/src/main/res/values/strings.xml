@@ -70,6 +70,30 @@
         <item>40</item>
         <item>50</item>
     </string-array>
+    
+    <string-array name="pcalc_result_data_zago">
+        <item>Денежное довольствие</item>
+        <item>Расчет пенсии</item>
+        <item>Надбавки</item>
+    </string-array>
+    
+    <string-array name="pcalc_result_data_den_dovi_struc">
+        <item>Оклад по должности</item>
+        <item>Оклад по званию</item>
+        <item>Надбавка за выслугу лет</item>
+        <item>Сумма денежного довольствия</item>
+    </string-array>
+
+    <string-array name="pcalc_result_data_calc_pensia_struc">
+        <item>Районный коэффициент</item>
+        <item>Ден.дов. для иссчисления пенсии</item>
+        <item>Размер пенсии в процентах</item>
+        <item>Размер минимальной пенсии</item>
+        <item>Размер пенсии</item>
+        <item>Размер пенсии с учетом рай.коэф</item>
+    </string-array>
+
+    
 
     <string-array name="pcalc_ar_data_zvan">
         <item>рядовой;5000</item>

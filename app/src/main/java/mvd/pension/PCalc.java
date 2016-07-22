@@ -204,12 +204,6 @@ public class PCalc{
 	}
 	
 
-//�) 10 ��������� � ��� ������� �� 2 �� 5 ���;
-//�) 15 ��������� � ��� ������� �� 5 �� 10 ���;
-//�) 20 ��������� � ��� ������� �� 10 �� 15 ���;
-//�) 25 ��������� � ��� ������� �� 15 �� 20 ���;
-//�) 30 ��������� � ��� ������� �� 20 �� 25 ���;
-//�) 40 ��������� � ��� ������� 25 ��� � �����.
 	private void RaschetVislLet(){
 		pRasVislLet = round((pOkladDolg+pOkladZvani)*(getProcVislLet()/100),2);
 	}
@@ -427,7 +421,7 @@ public class PCalc{
 				kolS = "2";
 				break;
 			case 3: 
-				kolS = "3 � �����";
+				kolS = "3 и более";
 				break;
 			default:
 				break;				
@@ -436,7 +430,7 @@ public class PCalc{
 	}
 	
 	public void setpIgdevency(int position) {
-		if (dataKolIgdevency[position].toString().equals("3 � �����")) pKolIgdev = 3;//�.� � ������� �� 3 � 3 � �����
+		if (dataKolIgdevency[position].toString().equals("3 и более")) pKolIgdev = 3;//�.� � ������� �� 3 � 3 � �����
 		else pKolIgdev = Integer.parseInt(dataKolIgdevency[position].toString());
 		//Rascht17B();
         RashetAll();

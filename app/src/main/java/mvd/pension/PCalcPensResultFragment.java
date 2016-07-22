@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
+import android.widget.SimpleExpandableListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,12 +31,16 @@ public class PCalcPensResultFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String[] mGroupsArray = new String[] { "Зима", "Весна", "Лето", "Осень" };
+    private String[] mGroupsDenDov;
+    private String[] mDenDovStruct;
 
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private PCalc pens;
+    private ExpandableListView elvView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -68,6 +73,9 @@ public class PCalcPensResultFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        pens = PCalc.get(getActivity());
+        mGroupsDenDov = getResources().getStringArray(R.array.pcalc_result_data_zago);
+        mGroupsDenDov = getResources().getStringArray(R.array.pcalc_result_data_den_dovi_struc);
     }
 
     @Override
@@ -80,18 +88,17 @@ public class PCalcPensResultFragment extends Fragment {
         //ссылка как заполнять ExpandableListView http://developer.alexanderklimov.ru/android/views/expandablelistview.php
 
         // Находим наш list
-        ExpandableListView elvView = (ExpandableListView) v.findViewById(R.id.elvDenDov);
-        Map<String, String> map;
+        elvView = (ExpandableListView) v.findViewById(R.id.elvDenDov);
 
-        // коллекция для групп
-        ArrayList<Map<String, String>> groupDataList = new ArrayList<>();
-        // заполняем коллекцию групп из массива с названиями групп
-        for (String group : mGroupsArray) {
-            // заполняем список атрибутов для каждой группы
-            map = new HashMap<>();
-            map.put("groupName", group); // время года
-            groupDataList.add(map);
-        }
+        UpdateTX();
+        //изменение параметров вызывает изменение итогов
+        pens.setChangeParam(new PCalc.ChangeParam() {
+            @Override
+            public void onChangeParam() {
+                // TODO Auto-generated method stub
+                UpdateTX();
+            }
+        });
 
         return v;
     }
@@ -113,6 +120,85 @@ public class PCalcPensResultFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }*/
+
+    public void UpdateTX(){
+        try {
+            Map<String, String> map;
+
+            // коллекция для групп
+            ArrayList<Map<String, String>> groupDataList = new ArrayList<>();
+            // заполняем коллекцию групп из массива с названиями групп
+            for (String group : mGroupsDenDov) {
+                // заполняем список атрибутов для каждой группы
+                map = new HashMap<>();
+                map.put("groupName", group); // время года
+                groupDataList.add(map);
+            }
+            // список атрибутов групп для чтения
+            String groupFrom[] = new String[] { "groupName" };
+            // список ID view-элементов, в которые будет помещены атрибуты групп
+            int groupTo[] = new int[] { android.R.id.text1 };
+
+            // создаем общую коллекцию для коллекций элементов
+            ArrayList<ArrayList<Map<String, String>>> сhildDataList = new ArrayList<>();
+
+            // в итоге получится сhildDataList = ArrayList<сhildDataItemList>
+
+            // создаем коллекцию элементов для первой группы
+            ArrayList<Map<String, String>> сhildDataItemList = new ArrayList<>();
+            // заполняем список атрибутов для каждого элемента
+            for (String month : mDenDovStruct) {
+                map = new HashMap<>();
+                map.put("structName", month); // название месяца
+                сhildDataItemList.add(map);
+            }
+            // добавляем в коллекцию коллекций
+            сhildDataList.add(сhildDataItemList);
+
+
+            // список атрибутов элементов для чтения
+            String childFrom[] = new String[] { "structName" };
+            // список ID view-элементов, в которые будет помещены атрибуты
+            // элементов
+            int childTo[] = new int[] { android.R.id.text1 };
+
+            SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(getActivity(), groupDataList,
+                    android.R.layout.simple_expandable_list_item_1, groupFrom,
+                    groupTo, сhildDataList, android.R.layout.simple_list_item_1,
+                    childFrom, childTo);
+
+            elvView.setAdapter(adapter);
+
+
+            /*txRasmMinPensii.setText(String.format("%.2f",pens.getpMinPens()));
+            txSumDenDov.setText(String.format("%.2f",pens.getpSumDenDov()));
+            txDolOklad.setText(String.format("%.2f",pens.getpOkladDolg()));
+            txZvanOklad.setText(String.format("%.2f",pens.getpOkladZvani()));
+            txProcNadb.setText(String.format("%.2f",pens.getpVislLet()));
+            txProcNadbName.setText(String.valueOf(
+                    String.format(getResources().getString(R.string.pcalc_nadb_visl_for_pensi),
+                            String.format("%.0f",pens.getPsVislLet()))));
+            txRaionKoeffName.setText(String.valueOf(
+                    String.format(getResources().getString(R.string.pcalc_nadb_raion_koeff),
+                            String.format("%.0f",pens.getpRaionKoeffRas()))));
+            txDenDovForIschislPensii.setText(String.format("%.2f",pens.getpSumDenDovForRashen()));
+            txRazmPensVProcent.setText(String.format("%.0f%%",pens.getpRasmPensiiVProcentah()));
+            txRaionKoeff.setText(String.format("%.2f",pens.getRaionKoeffSum()));
+            txDenDovForIschName.setText(String.valueOf(
+                    String.format(getResources().getString(R.string.pcalc_sum_den_dov_for_isch),
+                            String.format("%.2f",pens.getProcentForPensii()))));
+            txRasmPensii.setText(String.format("%.2f",pens.getpRasmPensii()));
+            txRasmPensiiUchetRaionKoeff.setText(String.format("%.2f",pens.getpRasmPensiiRaionKoeff()));
+            //txItog.setText(String.format("%.2f",pens.getpItogSum()));
+            txItog.setText(String.valueOf(
+                    String.format(getResources().getString(R.string.pcalc_result_text),
+                            String.format("%.2f",pens.getpItogSum())))+" руб. "+pens.getpDataRashet());
+            txNadb.setText(pens.getpNadbavki_string());*/
+        } catch (Exception e) {
+            // TODO: handle exception
+            //Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onDetach() {
