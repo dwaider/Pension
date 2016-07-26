@@ -71,19 +71,6 @@
         <item>50</item>
     </string-array>
     
-    <string-array name="pcalc_result_data_zago">
-        <item>Денежное довольствие</item>
-        <item>Расчет пенсии</item>
-        <item>Надбавки</item>
-    </string-array>
-    
-    <string-array name="pcalc_result_data_den_dovi_struc">
-        <item>Оклад по должности</item>
-        <item>Оклад по званию</item>
-        <item>Надбавка за выслугу лет</item>
-        <item>Сумма денежного довольствия</item>
-    </string-array>
-
     <string-array name="pcalc_result_data_calc_pensia_struc">
         <item>Районный коэффициент</item>
         <item>Ден.дов. для иссчисления пенсии</item>
@@ -165,5 +152,6 @@
     <string name="allow">Allow the user access</string>
     <string name="dont_allow">Don\'t allow the user access</string>
     <string name="mvd.pension.string.help_zago_visl_let">Пенсия за выслугу лет</string>
+    <string name="const_zero">0</string>
 
 </resources>

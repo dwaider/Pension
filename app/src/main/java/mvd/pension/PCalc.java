@@ -181,14 +181,14 @@ public class PCalc{
 	}
 	private void RaschetRazmPens_v_Procent() {
 		float v = 0;
-		if (!pSmeshPens) { //�� �������
+		if (!pSmeshPens) {
 			if (pKlandVisl >= 20){
 				v = ((pKlandVisl - 20)*3)+50;
 				if (v > 85) v = 85;
 			};
 		}
 		else
-		{ // �� ���� ���������
+		{
 			if (pObsheTrudVisl >=25) {
 				v = ((pObsheTrudVisl - 25)) +50; 
 			}
@@ -212,7 +212,6 @@ public class PCalc{
 	}
 
     private void RaschetDenDov(){
-    	//������ ��������� �����������
     	pSumDenDov = round(pOkladDolg+pOkladZvani + pRasVislLet,2);
     }
     
@@ -239,7 +238,6 @@ public class PCalc{
     	RashetNadavok();
     	RashetItogVipl();
 		try {
-			//���������� ���������� ����� ����� ����������� ������� ������ ������� 15 ���
 			PcalcIntentJSONSerializer.get(this.context).savePensCalc(pPens, FILENAME);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -302,7 +300,6 @@ public class PCalc{
 	public float getRaionKoeffSum(){
 		return pRaionKoeffSum;
 	}
-	//�������� ������� c 01.02.2016 ����;69.45;4769.09
 	public void setpProcentForPensii(int position) {
 		pProcentForPensiiString = dataPocentForPensi[position].toString();
         String tStr = pProcentForPensiiString;
@@ -473,7 +470,7 @@ public class PCalc{
 					context.getResources().getString(R.string.pcalc_nadb_VBD),
 					String.format("%.2f",nNadbavka.get(NADBAVKA_VBD))) + ";";
 		}	
-		if (nNadbavka.get(NADBAVKA_17B)!=null){//���������
+		if (nNadbavka.get(NADBAVKA_17B)!=null){
 			st = st + String.format(
 					context.getResources().getString(R.string.pcalc_nadb_17B),
 					String.format("%.2f",nNadbavka.get(NADBAVKA_17B)))+ ";";
@@ -533,7 +530,7 @@ public class PCalc{
 	}
 	public void loadPCalc(JSONObject json) throws JSONException {
 		pBay_save_and_nadbav = json.getBoolean(JSON_PAY_SAVE_NADB);
-		if (pBay_save_and_nadbav) {//���� ������� ���������� � �������� ����� ��������� ������
+		if (pBay_save_and_nadbav) {
 			pId = UUID.fromString(json.getString(JSON_ID));
 			pOkladDolg = (float) json.getDouble(JSON_OKLAD_DOLGNOST);
 			pOkladZvani = (float) json.getDouble(JSON_OKLAD_ZVAN);
@@ -553,10 +550,9 @@ public class PCalc{
 	
 	//*****************************************************************************	
   	public interface ChangeParam {
-  		/** @param ������� ���������� */
-  		   void onChangeParam();
+    		   void onChangeParam();
 	}
-  	/** @param l ������ ��������� ��������� */
+
   	public void setChangeParam(ChangeParam l) {
   		chParam = l;
   	}

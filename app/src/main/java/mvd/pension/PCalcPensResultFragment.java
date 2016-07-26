@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,8 +32,21 @@ public class PCalcPensResultFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String[] mGroupsDenDov;
-    private String[] mDenDovStruct;
+    private TextView txRaionKoeff;
+    private TextView txDolOklad;
+    private TextView txZvanOklad;
+    private TextView txProcNadb;
+    private TextView txProcNadbName;
+    private TextView txSumDenDov;
+    private TextView txRazmPensVProcent;
+    private TextView txRaionKoeffName;
+    private TextView txDenDovForIschislPensii;
+    private TextView txDenDovForIschName;
+    private TextView txRasmPensii;
+    private TextView txRasmPensiiUchetRaionKoeff;
+    private TextView txRasmMinPensii;
+    private TextView txNadb;
+    private TextView txItog;
 
 
     // TODO: Rename and change types of parameters
@@ -40,8 +54,6 @@ public class PCalcPensResultFragment extends Fragment {
     private String mParam2;
 
     private PCalc pens;
-    private ExpandableListView elvView;
-
     private OnFragmentInteractionListener mListener;
 
     public PCalcPensResultFragment() {
@@ -74,24 +86,31 @@ public class PCalcPensResultFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         pens = PCalc.get(getActivity());
-        mGroupsDenDov = getResources().getStringArray(R.array.pcalc_result_data_zago);
-        mGroupsDenDov = getResources().getStringArray(R.array.pcalc_result_data_den_dovi_struc);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_result_calc, container, false);
-
-        //ссылка как заполнять ExpandableListView http://developer.alexanderklimov.ru/android/views/expandablelistview.php
-
-        // Находим наш list
-        elvView = (ExpandableListView) v.findViewById(R.id.elvDenDov);
-
+        View v = inflater.inflate(R.layout.fragment_result_calc, parent, false);
+        txDolOklad = (TextView)v.findViewById(R.id.txDolOklad);
+        txZvanOklad = (TextView)v.findViewById(R.id.txZvanOklad);
+        txProcNadb = (TextView)v.findViewById(R.id.txVislProcNadb);
+        txRaionKoeff = (TextView)v.findViewById(R.id.txRaionKoeff);
+        txSumDenDov = (TextView)v.findViewById(R.id.txSumDov);
+        txRazmPensVProcent = (TextView)v.findViewById(R.id.txRazmVProcent);
+        txProcNadbName = (TextView)v.findViewById(R.id.txNameProcNadb);
+        txRaionKoeffName = (TextView)v.findViewById(R.id.txNameRaionKoeff);
+        txDenDovForIschislPensii = (TextView)v.findViewById(R.id.txDenDovForIschislPensii);
+        txDenDovForIschName = (TextView)v.findViewById(R.id.txDenDovForIsch);
+        txRasmPensii = (TextView)v.findViewById(R.id.txRasmPensii);
+        txRasmPensiiUchetRaionKoeff = (TextView)v.findViewById(R.id.txRazmUchetRaionKoeff);
+        txRasmMinPensii = (TextView)v.findViewById(R.id.txMinPensii);
+        txItog = (TextView)v.findViewById(R.id.txItog);
+        //	lstNadbavki = (ListView)v.findViewById(R.id.lstNadbvka);
+        //layNadbavka = (LinearLayout)v.findViewById(R.id.layNadbvka1);
+        //lstNadbavki.se
+        txNadb = (TextView)v.findViewById(R.id.txNadbavka);
         UpdateTX();
-        //изменение параметров вызывает изменение итогов
         pens.setChangeParam(new PCalc.ChangeParam() {
             @Override
             public void onChangeParam() {
@@ -99,7 +118,6 @@ public class PCalcPensResultFragment extends Fragment {
                 UpdateTX();
             }
         });
-
         return v;
     }
 
@@ -120,57 +138,9 @@ public class PCalcPensResultFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }*/
-
     public void UpdateTX(){
         try {
-            Map<String, String> map;
-
-            // коллекция для групп
-            ArrayList<Map<String, String>> groupDataList = new ArrayList<>();
-            // заполняем коллекцию групп из массива с названиями групп
-            for (String group : mGroupsDenDov) {
-                // заполняем список атрибутов для каждой группы
-                map = new HashMap<>();
-                map.put("groupName", group); // время года
-                groupDataList.add(map);
-            }
-            // список атрибутов групп для чтения
-            String groupFrom[] = new String[] { "groupName" };
-            // список ID view-элементов, в которые будет помещены атрибуты групп
-            int groupTo[] = new int[] { android.R.id.text1 };
-
-            // создаем общую коллекцию для коллекций элементов
-            ArrayList<ArrayList<Map<String, String>>> сhildDataList = new ArrayList<>();
-
-            // в итоге получится сhildDataList = ArrayList<сhildDataItemList>
-
-            // создаем коллекцию элементов для первой группы
-            ArrayList<Map<String, String>> сhildDataItemList = new ArrayList<>();
-            // заполняем список атрибутов для каждого элемента
-            for (String month : mDenDovStruct) {
-                map = new HashMap<>();
-                map.put("structName", month); // название месяца
-                сhildDataItemList.add(map);
-            }
-            // добавляем в коллекцию коллекций
-            сhildDataList.add(сhildDataItemList);
-
-
-            // список атрибутов элементов для чтения
-            String childFrom[] = new String[] { "structName" };
-            // список ID view-элементов, в которые будет помещены атрибуты
-            // элементов
-            int childTo[] = new int[] { android.R.id.text1 };
-
-            SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(getActivity(), groupDataList,
-                    android.R.layout.simple_expandable_list_item_1, groupFrom,
-                    groupTo, сhildDataList, android.R.layout.simple_list_item_1,
-                    childFrom, childTo);
-
-            elvView.setAdapter(adapter);
-
-
-            /*txRasmMinPensii.setText(String.format("%.2f",pens.getpMinPens()));
+            txRasmMinPensii.setText(String.format("%.2f",pens.getpMinPens()));
             txSumDenDov.setText(String.format("%.2f",pens.getpSumDenDov()));
             txDolOklad.setText(String.format("%.2f",pens.getpOkladDolg()));
             txZvanOklad.setText(String.format("%.2f",pens.getpOkladZvani()));
@@ -193,7 +163,7 @@ public class PCalcPensResultFragment extends Fragment {
             txItog.setText(String.valueOf(
                     String.format(getResources().getString(R.string.pcalc_result_text),
                             String.format("%.2f",pens.getpItogSum())))+" руб. "+pens.getpDataRashet());
-            txNadb.setText(pens.getpNadbavki_string());*/
+            txNadb.setText(pens.getpNadbavki_string());
         } catch (Exception e) {
             // TODO: handle exception
             //Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
