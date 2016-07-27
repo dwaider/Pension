@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.Toast;
-
+//заставка
 public class PCalcSplashActivity extends AppCompatActivity {
 	/** Duration of wait **/
     private final int SPLASH_DISPLAY_LENGTH = 3000;

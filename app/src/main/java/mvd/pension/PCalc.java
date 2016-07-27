@@ -37,7 +37,10 @@ public class PCalc{
 	private static PCalc pPens; 
 	private UUID pId;
 	private Context context;
+
 	private ChangeParam chParam;
+	private testBay tsBay;
+
     private float pOkladZvani = 0;
     private String pOkladZvaniString = "";
     private String pProcentForPensiiString = "";
@@ -553,6 +556,19 @@ public class PCalc{
     		   void onChangeParam();
 	}
 
+	public interface testBay {
+		void onPensBay();
+	}
+
+	public void setTestBay(testBay l) {
+		tsBay = l;
+	}
+
+	public void notifyListernBay() {
+		if (null != tsBay) {
+			tsBay.onPensBay();
+		}
+	}
   	public void setChangeParam(ChangeParam l) {
   		chParam = l;
   	}
