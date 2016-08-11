@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 
 import com.util.IabHelper;
 import com.util.IabResult;
@@ -286,26 +285,20 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	public boolean onNavigationItemSelected(MenuItem item) {
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
-		FragmentManager fm = getSupportFragmentManager();
-		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
-		//if (fragment == null) {
-
 			if (id == R.id.nav_camera) {
 				// Handle the camera action
 			} else if (id == R.id.nav_gallery) {
 
 			} else if (id == R.id.nav_dopl) {
-				fragment = new PCalcPayFragment();
+				Intent i = new Intent(this, PCalcPensMenuActivity.class);
+				startActivity(i);
+				this.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
+//				getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
 			} else if (id == R.id.nav_share) {
 
 			} else if (id == R.id.nav_send) {
 
 			}
-  			fm.beginTransaction()
-					.add(R.id.fragmentContainer, fragment)
-					.commit();
-		//}
-
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawer.closeDrawer(GravityCompat.START);
 		return true;

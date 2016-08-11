@@ -27,7 +27,7 @@ public class PCalcPayFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_pcalc_pay, parent, false);
-		getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+		//getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 		btPayAutoSaveNadbavk = (Button) v.findViewById(R.id.btPayAutoSaveNadbavki);
 		if (!pens.ispBay_save_and_nadbav()) {
 			btPayAutoSaveNadbavk.setOnClickListener(new View.OnClickListener() {
