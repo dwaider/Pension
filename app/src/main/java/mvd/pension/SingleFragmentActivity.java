@@ -1,12 +1,14 @@
 package mvd.pension;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,13 +21,20 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import com.util.IabHelper;
 import com.util.IabResult;
 import com.util.Inventory;
 import com.util.Purchase;
 
+import mvd.pension.FragmentActivity.PCalcPayFragment;
+import mvd.pension.FragmentActivity.PCalcPensTabPager;
+
 public abstract class SingleFragmentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 	protected abstract Fragment createFragment();
+    private OnSelectFragment OnSelectFragment;
 
 	private static final String TAG = "myLogsPayPension";
 
@@ -197,7 +206,43 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pcalc_splash);
 
+        this.setOnSelectFragment(new OnSelectFragment() {
+            @Override
+            public void OnSelectFragments(int numFragment) {
+                Fragment v = null;
+                if (numFragment == 0) {
+                    v = new PCalcPensTabPager();
+                }
+                if (numFragment == 1) {
+                    v = new PCalcPayFragment();
+                }
+                if (v != null) {
+                    FragmentManager fm = getSupportFragmentManager();
+                   // Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+                    FragmentTransaction transaction = fm.beginTransaction();
+                    transaction.replace(R.id.fragmentContainer, v);
+					transaction.addToBackStack(null);
+                    transaction.commit();
+                    //fm.beginTransaction().replace()
+                  //  if (fragment == null) {
+                  //      fragment = v;
+                  //      fm.beginTransaction()
+                  //              .add(R.id.fragmentContainer, fragment)
+                  //              .commit();
+                  //  }
+                }
+            }
+        });
+
+		if (getIntent().getExtras() != null) {
+			for (String key : getIntent().getExtras().keySet()) {
+				String value = getIntent().getExtras().getString(key);
+			//	Log.d(TAG, "Key: " + key + " Value: " + value);
+			}
+		}
+
 		pens = PCalc.get(this);
+		InstPay();
 		pens.setTestBay(new PCalc.testBay() {
 			@Override
 			public void onPensBay() {
@@ -219,13 +264,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 
 				Snackbar.make(view, "ВАША ПЕНСИЯ "+String.format("%.2f",pens.getpItogSum()), Snackbar.LENGTH_LONG)
 						.setAction("Action", null).show();
-				//FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-				//layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
-				//layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.25);
-				//fab1.setLayoutParams(layoutParams);
-				//fab1.startAnimation(fab_1_show);
-				//fab1.setClickable(true);
-
 			}
 		});
 
@@ -285,22 +323,41 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	public boolean onNavigationItemSelected(MenuItem item) {
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
-			if (id == R.id.nav_camera) {
+			if (id == R.id.nav_calc_pens) {
 				// Handle the camera action
-			} else if (id == R.id.nav_gallery) {
+                OnSelectFragment.OnSelectFragments(1);
+				//Intent i = new Intent(this, PCalcPensActivity.class);
+				//startActivity(i);
+				//this.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
+			} else if (id == R.id.nav_spr) {
 
 			} else if (id == R.id.nav_dopl) {
-				Intent i = new Intent(this, PCalcPensMenuActivity.class);
-				startActivity(i);
-				this.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
+                OnSelectFragment.OnSelectFragments(0);
+				//Intent i = new Intent(this, PCalcPensMenuActivity.class);
+				//startActivity(i);
+				//this.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
 //				getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
-			} else if (id == R.id.nav_share) {
-
 			} else if (id == R.id.nav_send) {
+				Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+				sharingIntent.setType("text/plain");
+				String shareBody = getResources().getString(R.string.mvd_pension_string_send_share_body);
+				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,getResources().getString(R.string.mvd_pension_string_send_share_subject));
+				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+				startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.mvd_pension_string_send_share_zago)));
 
+			} else if (id == R.id.nav_rate) {
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.mvd_pension_string_send_share_body))));
+			} else if (id == R.id.nav_messange)
+			{
+                OnSelectFragment.OnSelectFragments(1);
 			}
+
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawer.closeDrawer(GravityCompat.START);
 		return true;
 	}
+
+    public void setOnSelectFragment(OnSelectFragment OnSelectFragment) {
+        this.OnSelectFragment = OnSelectFragment;
+    }
 }

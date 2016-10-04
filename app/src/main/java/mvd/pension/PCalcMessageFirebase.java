@@ -3,28 +3,23 @@ package mvd.pension;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PCalcPensTabPager.OnFragmentInteractionListener} interface
+ * {@link PCalcMessageFirebase.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PCalcPensTabPager#newInstance} factory method to
+ * Use the {@link PCalcMessageFirebase#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PCalcPensTabPager extends Fragment {
+public class PCalcMessageFirebase extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,12 +29,14 @@ public class PCalcPensTabPager extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     private OnFragmentInteractionListener mListener;
 
-    public PCalcPensTabPager() {
+    public PCalcMessageFirebase() {
         // Required empty public constructor
     }
 
@@ -49,11 +46,11 @@ public class PCalcPensTabPager extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PCalcPensTabPager.
+     * @return A new instance of fragment PCalcMessageFirebase.
      */
     // TODO: Rename and change types and number of parameters
-    public static PCalcPensTabPager newInstance(String param1, String param2) {
-        PCalcPensTabPager fragment = new PCalcPensTabPager();
+    public static PCalcMessageFirebase newInstance(String param1, String param2) {
+        PCalcMessageFirebase fragment = new PCalcMessageFirebase();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,51 +71,20 @@ public class PCalcPensTabPager extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_pcalc_pens_tab_pager, container, false);
-        viewPager = (ViewPager) v.findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
+        View v = inflater.inflate(R.layout.fragment_pens_calc, container, false);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
 
-        tabLayout = (TabLayout) v.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
         return v;
     }
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new PCalcPensDataFragment(), "Данные");
-        adapter.addFragment(new PCalcPensNadbDataFragment(), "Надбавки");
-        adapter.addFragment(new PCalcPensResultFragment(), "Сумма пенсии");
-        viewPager.setAdapter(adapter);
-    }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -149,7 +115,7 @@ public class PCalcPensTabPager extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

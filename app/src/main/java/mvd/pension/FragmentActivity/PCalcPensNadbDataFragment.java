@@ -1,6 +1,5 @@
-package mvd.pension;
+package mvd.pension.FragmentActivity;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+
+import mvd.pension.adapter.MySppinerAdapterForProcentPens;
+import mvd.pension.PCalc;
+import mvd.pension.R;
 
 
 /**
@@ -72,7 +77,7 @@ public class PCalcPensNadbDataFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_nadb_calc, container, false);
-
+        // адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpRayonKoef());
         Spinner spNadbRaionKoeff = (Spinner) v.findViewById(R.id.spNadbRaionKoeff);
         spNadbRaionKoeff.setAdapter(adapter);
@@ -94,7 +99,37 @@ public class PCalcPensNadbDataFragment extends Fragment {
 
             }
         });
+        CheckBox chVetBoevDest = (CheckBox) v.findViewById(R.id.chVetBoevDest);
+        if (!pens.ispBay_save_and_nadbav()) {chVetBoevDest.setEnabled(false);}//если куплено
+        else chVetBoevDest.setEnabled(true);
+        chVetBoevDest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // TODO Auto-generated method stub
+                pens.setpVetBoevDeist(isChecked);
+            }
+        });
+        chVetBoevDest.setChecked(pens.ispVetBoevDeist());
 
+        MySppinerAdapterForProcentPens adapter1 = new MySppinerAdapterForProcentPens(getActivity(),pens.getpProcentForPensii());
+        Spinner spProcentForPensi = (Spinner) v.findViewById(R.id.spProcentForPensi);
+        spProcentForPensi.setAdapter(adapter1);
+        spProcentForPensi.setSelection(adapter1.getPosition(String.valueOf(pens.getProcentForPensii())));
+        spProcentForPensi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                // TODO Auto-generated method stub
+                pens.setpProcentForPensii(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getDataKolIgdevency());
         Spinner spKolIgdev = (Spinner) v.findViewById(R.id.spIgdevency);
         if (!pens.ispBay_save_and_nadbav()) {spKolIgdev.setEnabled(false);}//если куплено
@@ -118,12 +153,6 @@ public class PCalcPensNadbDataFragment extends Fragment {
             }
         });
 
-
-
-        MySppinerAdapterForProcentPens adapter1 = new MySppinerAdapterForProcentPens(getActivity(),pens.getpProcentForPensii());
-        Spinner spProcentForPensi = (Spinner) v.findViewById(R.id.spProcentForPensi);
-        spProcentForPensi.setAdapter(adapter1);
-        spProcentForPensi.setSelection(adapter1.getPosition(String.valueOf(pens.getProcentForPensii())));
         return v;
     }
 

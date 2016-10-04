@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_calc_pens"
             android:icon="@drawable/ic_calculator_black_18dp"
             android:title="@string/menu_pensia_calc" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_spr"
             android:icon="@drawable/ic_information_black_18dp"
             android:title="@string/menu_spr_pensia" />
     </group>
@@ -22,12 +23,16 @@
     <item android:title="@string/menu_communication">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_messange"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Сообщения" />
+            <item
+                android:id="@+id/nav_rate"
                 android:icon="@drawable/ic_star_black_18dp"
                 android:title="@string/menu_rate" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_send" />
         </menu>
     </item>

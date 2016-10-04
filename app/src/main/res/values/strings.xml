@@ -147,6 +147,10 @@
 
     <string name="mvd.pension.string.pay_autosave_nadbavki">Данное дополнение позволяет подключить автосохранение выплненного расчета, а также включить в расчет пенсии надбавки на иждевенца и ветерана боевых действий. Покупка этого дополнения единоразовое при дальнейших обновлениях вы получаете дополнительные функции и дальнейшие перерасчеты пенсий согласно Законодательству РФ без ограничений.</string>
 
+    <string name="mvd.pension.string.send_share_body">https://play.google.com/store/apps/details?id=mvd.pension</string>
+    <string name="mvd.pension.string.send_share_subject">Расчет пенсии силовиков</string>
+    <string name="mvd.pension.string.send_share_zago">Сообщить через</string>
+
     <string name="todo">TODO</string>
     <string name="allow">Allow the user access</string>
     <string name="dont_allow">Don\'t allow the user access</string>

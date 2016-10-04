@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mvd.pension.PCalcPensNadbDataFragment">
+    tools:context="mvd.pension.FragmentActivity.PCalcPensNadbDataFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,17 +18,20 @@
                 android:id="@+id/txVal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_marginTop="24dp"
                 android:text="@string/pcalc_procent_for_pensi"/>
             <Spinner
                 android:id="@+id/spProcentForPensi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:spinnerMode="dialog"/>
             <TextView
                 android:id="@+id/txRaionKoeff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_marginTop="24dp"
                 android:text="@string/pcalc_nadb_raion_koeff_1"
                 />
@@ -36,18 +39,29 @@
                 android:id="@+id/spNadbRaionKoeff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:spinnerMode="dialog"/>
             <TextView
                 android:id="@+id/txNadb17b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_marginTop="24dp"
                 android:text="@string/pcalc_nadb_17B_text"/>
             <Spinner
                 android:id="@+id/spIgdevency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:spinnerMode="dialog"/>
+            <CheckBox
+                android:id="@+id/chVetBoevDest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/pcalc_nadb_vet_war"
+                android:layout_marginTop="24dp"/>
         </LinearLayout>
     </ScrollView>
+
 </FrameLayout>

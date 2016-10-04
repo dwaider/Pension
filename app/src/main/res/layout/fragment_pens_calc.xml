@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     tools:context="mvd.pension.PСalcPensDataFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,7 +20,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/pcalc_oklad_zavan"
                 android:id="@+id/textView" />
             <Spinner
@@ -40,7 +39,8 @@
                     android:id="@+id/edPOklad_dolg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/pcalc_oklad_dolg" />
+                    android:hint="@string/pcalc_oklad_dolg"
+                    android:inputType="number"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -56,7 +56,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
-                    android:hint="@string/pcalc_calend_visluga" />
+                    android:hint="@string/pcalc_calend_visluga"
+                    android:inputType="number"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -79,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
                     android:hint="@string/pcalc_visluga_trud"
-                    android:inputType="number|numberDecimal"/>
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -95,7 +96,7 @@
                     android:digits="0123456789"
                     android:ems="10"
                     android:hint="@string/pcalc_visl_for_procent_nadb"
-                    android:inputType="number|numberDecimal"/>
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </ScrollView>

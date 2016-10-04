@@ -15,7 +15,5 @@
         android:paddingLeft="8dp"
         android:paddingRight="4dp"
         android:text="****"
-        android:textSize="16sp"
-        android:textStyle="normal"
         android:typeface="normal" />
 </RelativeLayout>

@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "121111681063",
+    "firebase_url": "https://api-6568255993600486572-912073.firebaseio.com",
+    "project_id": "api-6568255993600486572-912073",
+    "storage_bucket": "api-6568255993600486572-912073.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121111681063:android:b36961da19191b61",
+        "android_client_info": {
+          "package_name": "mvd.pension"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121111681063-b8easodba0erv8bknlr2ceau1lkuccd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mvd.pension",
+            "certificate_hash": "85BC82E8E889CCFB7DA701C5062ED16C6FD6857C"
+          }
+        },
+        {
+          "client_id": "121111681063-vn8dp5ca5nkvohm1dsnc8rrllfclfpaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-5wbceksJ1VWjv5jAZ1f14T5--bRcqVA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

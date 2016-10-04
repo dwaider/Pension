@@ -430,7 +430,7 @@ public class PCalc{
 	}
 	
 	public void setpIgdevency(int position) {
-		if (dataKolIgdevency[position].toString().equals("3 и более")) pKolIgdev = 3;//�.� � ������� �� 3 � 3 � �����
+		if (dataKolIgdevency[position].toString().equals("3 и более")) pKolIgdev = 3;
 		else pKolIgdev = Integer.parseInt(dataKolIgdevency[position].toString());
 		//Rascht17B();
         RashetAll();

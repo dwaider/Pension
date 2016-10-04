@@ -1,4 +1,4 @@
-package mvd.pension;
+package mvd.pension.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+
+import mvd.pension.R;
 
 public class MySppinerAdapterForProcentPens extends ArrayAdapter<String> implements SpinnerAdapter {
 	private final Activity context;
@@ -23,11 +25,11 @@ public class MySppinerAdapterForProcentPens extends ArrayAdapter<String> impleme
 		public TextView textView;
 	}
 	
+
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		View rowView = convertView;
-
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
 			rowView = inflater.inflate(R.layout.rowspinner, parent, false);
@@ -37,19 +39,9 @@ public class MySppinerAdapterForProcentPens extends ArrayAdapter<String> impleme
 		} else {
 			holder = (ViewHolder) rowView.getTag();
 		}
-		//ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		String tStr = values[position].substring(values[position].indexOf(";")+1);
 		String tProcent = tStr.substring(0, tStr.indexOf(";"));
 		holder.textView.setText(tProcent);
-	//	String s = values[position];
-	//	if (s.startsWith("Windows7") || s.startsWith("iPhone")
-	//			|| s.startsWith("Solaris")) {
-	//		imageView.setImageResource(R.drawable.no);
-	//	} else {
-	//		imageView.setImageResource(R.drawable.ok);
-	//	}
-		
-
 		return rowView;
 	}
 
@@ -57,6 +49,7 @@ public class MySppinerAdapterForProcentPens extends ArrayAdapter<String> impleme
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		View rowView = convertView;
+
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
 			rowView = inflater.inflate(R.layout.rowspinner, parent, false);
@@ -70,13 +63,7 @@ public class MySppinerAdapterForProcentPens extends ArrayAdapter<String> impleme
 		String tStr = values[position].substring(values[position].indexOf(";")+1);
 		String tProcent = tStr.substring(0, tStr.indexOf(";"));
 		holder.textView.setText(tProcent);
-	//	String s = values[position];
-	//	if (s.startsWith("Windows7") || s.startsWith("iPhone")
-	//			|| s.startsWith("Solaris")) {
-	//		imageView.setImageResource(R.drawable.no);
-	//	} else {
-	//		imageView.setImageResource(R.drawable.ok);
-	//	}
 		return rowView;
 	}
+	
 }
