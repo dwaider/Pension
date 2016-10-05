@@ -2,8 +2,11 @@ package mvd.pension;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
@@ -17,7 +20,8 @@ import com.google.firebase.messaging.RemoteMessage;
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
     private static final String TAG = "FirebaseMsgService";
     private PCalcMessFireBase MessBase;
-    private PCalcMessageSQLite Mess;
+    private PCalcMessageSQLite pCalcMessageSQLite;
+
 
     /**
      * Called when message is received.
@@ -36,12 +40,25 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
       //  MessBase.setMess1(remoteMessage.getFrom());
       //  MessBase.setMess2(remoteMessage.getNotification().getBody());
        // Mess.insertRun(MessBase);
-
+        insertSQLiteMessage(remoteMessage.getFrom(),remoteMessage.getNotification().getBody());
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
     }
     // [END receive_message]
-
+    public void insertSQLiteMessage(String mes_1,String mes_2) {
+        pCalcMessageSQLite = new PCalcMessageSQLite(this);
+        try {
+            pCalcMessageSQLite.checkAndCopyDatabase();
+            pCalcMessageSQLite.openDataBase();
+            ContentValues values = new ContentValues();
+            values.put("mess_1", mes_1);
+            values.put("mess_2", mes_2);
+            pCalcMessageSQLite.Insert(values);
+        }
+        catch(SQLiteException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Create and show a simple notification containing the received FCM message.
      *

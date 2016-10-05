@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import mvd.pension.PCalc;
+import mvd.pension.Core.PCalc;
 import mvd.pension.R;
 
 

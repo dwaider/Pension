@@ -1,17 +1,14 @@
 package mvd.pension.FragmentActivity;
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 
-import mvd.pension.PCalc;
+import mvd.pension.Core.PCalc;
 import mvd.pension.R;
 
 public class PCalcPayFragment extends Fragment {

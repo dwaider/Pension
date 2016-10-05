@@ -15,7 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import mvd.pension.PCalc;
+import mvd.pension.Core.PCalc;
 import mvd.pension.R;
 
 

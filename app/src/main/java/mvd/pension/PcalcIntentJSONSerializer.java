@@ -14,6 +14,9 @@ import org.json.JSONException;
 import org.json.JSONTokener;
 
 import android.content.Context;
+
+import mvd.pension.Core.PCalc;
+
 public class PcalcIntentJSONSerializer {
 	private Context mContext;
 	private String mFilename;
@@ -30,7 +33,7 @@ public class PcalcIntentJSONSerializer {
 		return pJSONSerializer;
 	}
 
-	public void savePensCalc(PCalc pens,String fileName)
+	public void savePensCalc(PCalc pens, String fileName)
 		throws JSONException, IOException {
 		mFilename = fileName;
 		JSONArray array = new JSONArray();

@@ -13,7 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 
 import mvd.pension.adapter.MySppinerAdapterForProcentPens;
-import mvd.pension.PCalc;
+import mvd.pension.Core.PCalc;
 import mvd.pension.R;
 
 

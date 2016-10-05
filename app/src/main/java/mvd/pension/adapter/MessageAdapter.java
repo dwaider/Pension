@@ -52,7 +52,7 @@ public class MessageAdapter extends RecyclerView.Adapter<SetViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
     public void setOnTapListener(OnTapListener OnTapListner) {

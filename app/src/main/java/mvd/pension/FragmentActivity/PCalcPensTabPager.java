@@ -81,11 +81,12 @@ public class PCalcPensTabPager extends Fragment {
 
         tabLayout = (TabLayout) v.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+       // viewPager.notify();
 
         return v;
     }
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new PCalcPensDataFragment(), "Данные");
         adapter.addFragment(new PCalcPensNadbDataFragment(), "Надбавки");
         adapter.addFragment(new PCalcPensResultFragment(), "Сумма пенсии");

@@ -1,4 +1,4 @@
-package mvd.pension;
+package mvd.pension.Core;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -7,6 +7,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Context;
 import android.util.SparseArray;
+
+import mvd.pension.PcalcIntentJSONSerializer;
+import mvd.pension.R;
 
 public class PCalc{
 	private static final int NADBAVKA_VBD = 1;
