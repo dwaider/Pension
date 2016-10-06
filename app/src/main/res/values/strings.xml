@@ -13,6 +13,7 @@
     <string name="menu_communication">Общение</string>
     <string name="menu_send">Поделиться</string>
     <string name="menu_rate">Оценить</string>
+    <string name="menu_message">Сообщения</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment_1">Hello blank fragment 1</string>

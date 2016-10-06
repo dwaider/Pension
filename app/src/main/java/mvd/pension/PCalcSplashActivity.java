@@ -1,13 +1,20 @@
 package mvd.pension;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
+
 //заставка
 public class PCalcSplashActivity extends AppCompatActivity {
 	/** Duration of wait **/
@@ -19,6 +26,7 @@ public class PCalcSplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
            //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash_pens);
+        insertSQLiteMessage("",getIntent().getStringExtra("mess_1"));
         mContext = this;
         new Handler().postDelayed(new Runnable(){
             @Override
@@ -31,5 +39,27 @@ public class PCalcSplashActivity extends AppCompatActivity {
         }, SPLASH_DISPLAY_LENGTH);
 
 	}
+    public void insertSQLiteMessage(String mes_1,String mes_2) {
+        PCalcMessageSQLite   pCalcMessageSQLite = new PCalcMessageSQLite(this);
+        try {
+            pCalcMessageSQLite.checkAndCopyDatabase();
+            pCalcMessageSQLite.openDataBase();
+            ContentValues values = new ContentValues();
+
+            values.put("mess_1", getDateNow());//подставляем дату
+            values.put("mess_2", mes_2);
+            pCalcMessageSQLite.Insert(values);
+        }
+        catch(SQLiteException e) {
+            e.printStackTrace();
+        }
+    }
+    @NonNull
+    private String getDateNow() {
+        String dt;
+        Date cal = (Date) Calendar.getInstance().getTime();
+        dt = cal.toLocaleString();
+        return  dt.toString();
+    }
 
 }

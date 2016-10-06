@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.util.IabHelper;
 import com.util.IabResult;
@@ -201,6 +202,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		if (getIntent().getExtras() != null) {
 			for (String key : getIntent().getExtras().keySet()) {
 				String value = getIntent().getExtras().getString(key);
+				Toast.makeText(this,value,Toast.LENGTH_LONG).show();
 			}
 		}
 		pens = PCalc.get(this);
@@ -244,7 +246,8 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 				fm.beginTransaction()
 				.add(R.id.fragmentContainer, fragment)
 				.commit();
-			}
+				getSupportActionBar().setTitle(getString(R.string.menu_pensia_calc));
+ 			}
 	}
 
 
@@ -284,19 +287,17 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	@Override
 	public boolean onNavigationItemSelected(MenuItem item) {
 		// Handle navigation view item clicks here.
+		Fragment fragment = null;
 		int id = item.getItemId();
+		String title = getString(R.string.app_name);
 			if (id == R.id.nav_calc_pens) {
-				FragmentManager fm = getSupportFragmentManager();
-				FragmentTransaction transaction = fm.beginTransaction();
-				transaction.replace(R.id.fragmentContainer, new PCalcPensTabPager());
-				transaction.commit();
+				fragment = new PCalcPensTabPager();
+				title = getString(R.string.menu_pensia_calc);
 			} else if (id == R.id.nav_spr) {
-
+				title = getString(R.string.menu_spr_pensia);
 			} else if (id == R.id.nav_dopl) {
-				FragmentManager fm = getSupportFragmentManager();
-				FragmentTransaction transaction = fm.beginTransaction();
-				transaction.replace(R.id.fragmentContainer, new PCalcPayFragment());
-				transaction.commit();
+				fragment = new PCalcPayFragment();
+				title = getString(R.string.menu_setting_dopol);
 			} else if (id == R.id.nav_send) {
 				Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 				sharingIntent.setType("text/plain");
@@ -308,10 +309,15 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.mvd_pension_string_send_share_body))));
 			} else if (id == R.id.nav_messange)
 			{
+				fragment = new PCalcPensMessageFragment();
+				title = getString(R.string.menu_message);
+			}
+			if (fragment != null) {
 				FragmentManager fm = getSupportFragmentManager();
 				FragmentTransaction transaction = fm.beginTransaction();
-				transaction.replace(R.id.fragmentContainer, new PCalcPensMessageFragment());
+				transaction.replace(R.id.fragmentContainer, fragment);
 				transaction.commit();
+				getSupportActionBar().setTitle(title);
 			}
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawer.closeDrawer(GravityCompat.START);

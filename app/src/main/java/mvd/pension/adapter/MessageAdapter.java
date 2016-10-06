@@ -1,9 +1,7 @@
 package mvd.pension.adapter;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

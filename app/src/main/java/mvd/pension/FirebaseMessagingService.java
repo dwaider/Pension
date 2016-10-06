@@ -9,10 +9,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Dmitry on 07.09.2016.
@@ -35,11 +40,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         // If the application is in the foreground handle both data and notification messages here.
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method be
-      //  Mess = new PCalcMessageSQLite(getApplication());
-      //  MessBase = new PCalcMessFireBase();
-      //  MessBase.setMess1(remoteMessage.getFrom());
-      //  MessBase.setMess2(remoteMessage.getNotification().getBody());
-       // Mess.insertRun(MessBase);
         insertSQLiteMessage(remoteMessage.getFrom(),remoteMessage.getNotification().getBody());
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
@@ -51,7 +51,8 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             pCalcMessageSQLite.checkAndCopyDatabase();
             pCalcMessageSQLite.openDataBase();
             ContentValues values = new ContentValues();
-            values.put("mess_1", mes_1);
+
+            values.put("mess_1", getDateNow());//подставляем дату
             values.put("mess_2", mes_2);
             pCalcMessageSQLite.Insert(values);
         }
@@ -59,13 +60,22 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             e.printStackTrace();
         }
     }
+
+    @NonNull
+    private String getDateNow() {
+        String dt;
+        Date cal = (Date) Calendar.getInstance().getTime();
+        dt = cal.toLocaleString();
+        return  dt.toString();
+    }
     /**
      * Create and show a simple notification containing the received FCM message.
      *
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, SingleFragmentActivity.class);
+        Intent intent = new Intent(this, PCalcSplashActivity.class);
+        intent.putExtra("mess_1",  messageBody);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -81,8 +91,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
-
 }
