@@ -202,7 +202,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		if (getIntent().getExtras() != null) {
 			for (String key : getIntent().getExtras().keySet()) {
 				String value = getIntent().getExtras().getString(key);
-				Toast.makeText(this,value,Toast.LENGTH_LONG).show();
 			}
 		}
 		pens = PCalc.get(this);
@@ -239,16 +238,23 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 
 		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
+
 		FragmentManager fm = getSupportFragmentManager();
 		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
-			if (fragment == null) {
-				fragment = createFragment();
-				fm.beginTransaction()
-				.add(R.id.fragmentContainer, fragment)
-				.commit();
-				getSupportActionBar().setTitle(getString(R.string.menu_pensia_calc));
- 			}
+		if (fragment == null) {
+				if (getIntent().getBooleanExtra("bol_mes",false) == true) {//получаем getIntent
+					fragment = new PCalcPensMessageFragment();
+				    getSupportActionBar().setTitle(getString(R.string.menu_message));
+				} else {
+					fragment = createFragment();
+				    getSupportActionBar().setTitle(getString(R.string.menu_pensia_calc));
+				}
+		}
+		fm.beginTransaction()
+		.add(R.id.fragmentContainer, fragment)
+		.commit();
 	}
+
 
 
 	@Override

@@ -38,12 +38,20 @@ public class MessageAdapter extends RecyclerView.Adapter<SetViewHolder> {
     public void onBindViewHolder(SetViewHolder holder, final int position) {
         holder.text_mess1.setText(items.get(position).getMess1());
         holder.text_mess2.setText(items.get(position).getMess2());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (OnTapListener != null) {
                     OnTapListener.OnTapView(position);
                 }
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // if (OnTapListener != null) {
+               //     OnTapListener.OnTapView(position);
+               // }
             }
         });
     }
