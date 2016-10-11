@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import mvd.pension.PCalcMessFireBase;
 import mvd.pension.PCalcMessageSQLite;
 import mvd.pension.R;
 import mvd.pension.adapter.MessageAdapter;
+import mvd.pension.dialog.DialogMessage;
 
 
 /**
@@ -80,7 +82,19 @@ public class PCalcPensMessageFragment extends Fragment {
         messageAdapter.setOnTapListener(new OnTapListener() {
             @Override
             public void OnTapView(int position) {
-                Toast.makeText(getActivity(),"pos = " + position,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(),"pos = " + position,Toast.LENGTH_LONG).show();
+                try {
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    position = position + 1;//в сообщениях сдвиг на один
+                    cursor = pCalcMessageSQLite.QueryData("select * from message where _id = "+position);
+                    cursor.moveToFirst();
+                    DialogMessage dialogMessage = DialogMessage.newInstance(position,cursor.getString(2));
+                    dialogMessage.show(fm, "dialog");
+                }
+                catch(SQLiteException e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
         recyclerView.setHasFixedSize(true);

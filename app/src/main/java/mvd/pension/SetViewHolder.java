@@ -20,7 +20,7 @@ public class SetViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         text_mess1 = (TextView) itemView.findViewById(R.id.text_mess1);
         text_mess2 = (TextView) itemView.findViewById(R.id.text_mess2);
-        button_delete = (Button) itemView.findViewById(R.id.button_delete);
+ //       button_delete = (Button) itemView.findViewById(R.id.button_delete);
  //       button_delete.setOnClickListener();
     }
 }
