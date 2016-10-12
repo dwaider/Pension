@@ -249,10 +249,10 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 					fragment = createFragment();
 				    getSupportActionBar().setTitle(getString(R.string.menu_pensia_calc));
 				}
+			fm.beginTransaction()
+			.add(R.id.fragmentContainer, fragment)
+			.commit();
 		}
-		fm.beginTransaction()
-		.add(R.id.fragmentContainer, fragment)
-		.commit();
 	}
 
 
