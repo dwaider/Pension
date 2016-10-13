@@ -84,6 +84,10 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
         myInput.close();;
     }
 
+    public int deleteId(int id) {
+        return myDataBase.delete("message", "_id = " + id, null);
+    }
+
     public Cursor QueryData(String query) {
         return myDataBase.rawQuery(query,null);
     }

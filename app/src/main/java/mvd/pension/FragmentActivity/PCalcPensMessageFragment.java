@@ -1,5 +1,6 @@
 package mvd.pension.FragmentActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -28,11 +29,14 @@ import mvd.pension.dialog.DialogMessage;
  */
 
 public class PCalcPensMessageFragment extends Fragment {
+    private int REQUEST_DELETE = 0;
+
     private RecyclerView recyclerView;
     private PCalcMessageSQLite pCalcMessageSQLite;
     private ArrayList<PCalcMessFireBase> arrayList = new ArrayList<PCalcMessFireBase>();
     private Cursor cursor;
     private MessageAdapter messageAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,7 @@ public class PCalcPensMessageFragment extends Fragment {
                 if (cursor.moveToFirst()) {
                     do {
                         PCalcMessFireBase item = new PCalcMessFireBase();
+                        item.setId(cursor.getInt(0));
                         item.setMess1(cursor.getString(1));
                         item.setMess2(cursor.getString(2));
                         arrayList.add(item);
@@ -82,13 +87,12 @@ public class PCalcPensMessageFragment extends Fragment {
         messageAdapter.setOnTapListener(new OnTapListener() {
             @Override
             public void OnTapView(int position) {
-                //Toast.makeText(getActivity(),"pos = " + position,Toast.LENGTH_LONG).show();
                 try {
                     FragmentManager fm = getActivity().getSupportFragmentManager();
-                    position = position + 1;//в сообщениях сдвиг на один
-                    cursor = pCalcMessageSQLite.QueryData("select * from message where _id = "+position);
+                    cursor = pCalcMessageSQLite.QueryData("select * from message where _id ="+arrayList.get(position).getId());
                     cursor.moveToFirst();
-                    DialogMessage dialogMessage = DialogMessage.newInstance(position,cursor.getString(2));
+                    DialogMessage dialogMessage = DialogMessage.newInstance(arrayList.get(position).getId(),cursor.getString(2),cursor.getString(1));
+                    dialogMessage.setTargetFragment(PCalcPensMessageFragment.this, REQUEST_DELETE);
                     dialogMessage.show(fm, "dialog");
                 }
                 catch(SQLiteException e)
@@ -100,5 +104,17 @@ public class PCalcPensMessageFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);//linearLayoutManager);
         recyclerView.setAdapter(messageAdapter);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != getActivity().RESULT_OK) return;
+        if (requestCode == REQUEST_DELETE) {
+            Boolean aBoolean = false;
+            aBoolean = (Boolean) data.getSerializableExtra(DialogMessage.EXTRA_DELETE);
+            if (aBoolean) {
+               messageAdapter.notifyAll();
+            }
+        }
     }
 }
