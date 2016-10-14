@@ -36,6 +36,7 @@ public class PCalcPensMessageFragment extends Fragment {
     private ArrayList<PCalcMessFireBase> arrayList = new ArrayList<PCalcMessFireBase>();
     private Cursor cursor;
     private MessageAdapter messageAdapter;
+    private int positionGlobal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class PCalcPensMessageFragment extends Fragment {
             @Override
             public void OnTapView(int position) {
                 try {
+                    positionGlobal = position;
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     cursor = pCalcMessageSQLite.QueryData("select * from message where _id ="+arrayList.get(position).getId());
                     cursor.moveToFirst();
@@ -113,7 +115,9 @@ public class PCalcPensMessageFragment extends Fragment {
             Boolean aBoolean = false;
             aBoolean = (Boolean) data.getSerializableExtra(DialogMessage.EXTRA_DELETE);
             if (aBoolean) {
-               messageAdapter.notifyAll();
+                //messageAdapter.notifyItemRemoved(positionGlobal);
+                arrayList.remove(positionGlobal);
+                messageAdapter.notifyDataSetChanged();
             }
         }
     }

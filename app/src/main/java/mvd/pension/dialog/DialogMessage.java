@@ -21,6 +21,7 @@ public class DialogMessage extends DialogFragment {
     private static final String EXTRA_TEXT_MESSAGE_DATA = "mvd.pension.dialog.text_message_data";
     public static final String EXTRA_DELETE = "mvd.pension.dialog.delete";
 
+
     private String mMessage = null;
     private String mMessage_data = null;
     private int mPosition;
@@ -44,7 +45,7 @@ public class DialogMessage extends DialogFragment {
                         PCalcMessageSQLite v=  new PCalcMessageSQLite(getActivity());
                         v.openDataBase();
                         if (v.deleteId(mPosition) == 1 ) {//количество удаленных строк
-                            sendResult(getActivity().RESULT_OK);
+                            sendResult(getActivity().RESULT_OK,mPosition);
                         }
                         dialog.cancel();
                     }
@@ -53,7 +54,7 @@ public class DialogMessage extends DialogFragment {
          return alertDialog;
     }
 
-    private void sendResult(int resultCode) {
+    private void sendResult(int resultCode,int position) {
         if (getTargetFragment() == null)
             return;
         Intent i = new Intent();
