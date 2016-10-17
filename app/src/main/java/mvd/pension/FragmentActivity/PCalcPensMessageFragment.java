@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import mvd.pension.OnInsertListern;
 import mvd.pension.OnTapListener;
 import mvd.pension.PCalcMessFireBase;
 import mvd.pension.PCalcMessageSQLite;
@@ -57,14 +58,9 @@ public class PCalcPensMessageFragment extends Fragment {
     }
 
     public void loadDataBase() {
-        pCalcMessageSQLite = new PCalcMessageSQLite(getActivity());
-        try {
-            pCalcMessageSQLite.checkAndCopyDatabase();
-            pCalcMessageSQLite.openDataBase();
-        }
-        catch(SQLiteException e) {
-            e.printStackTrace();
-        }
+        pCalcMessageSQLite = PCalcMessageSQLite.get(getActivity());
+
+
         try {
             cursor = pCalcMessageSQLite.QueryData("select * from message");
             if (cursor != null) {
@@ -103,6 +99,21 @@ public class PCalcPensMessageFragment extends Fragment {
                 }
             }
         });
+
+        pCalcMessageSQLite.setOnInsertListern(new OnInsertListern() {
+            @Override
+            public void OnInsertData(Cursor cursor) {
+                if (arrayList != null) {
+                    PCalcMessFireBase item = new PCalcMessFireBase();
+                    item.setId(cursor.getInt(0));
+                    item.setMess1(cursor.getString(1));
+                    item.setMess2(cursor.getString(2));
+                    arrayList.add(item);
+                    messageAdapter.notifyItemInserted(arrayList.size());
+                }
+            }
+        });
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);//linearLayoutManager);
         recyclerView.setAdapter(messageAdapter);

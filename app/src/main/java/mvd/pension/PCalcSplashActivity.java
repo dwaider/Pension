@@ -31,7 +31,7 @@ public class PCalcSplashActivity extends AppCompatActivity {
         //нужно отправлять через расширенные параметры сообщения используя mess_1
         mes = getIntent().getStringExtra("mess_1");
         if (mes != null) {//если не пустой записываем в БД
-            insertSQLiteMessage("", mes);
+            PCalcMessageSQLite.get(this).insertSQLiteMessage("",mes);
         }
 
         mContext = this;
@@ -49,26 +49,4 @@ public class PCalcSplashActivity extends AppCompatActivity {
         }, SPLASH_DISPLAY_LENGTH);
 
 	}
-    public void insertSQLiteMessage(String mes_1,String mes_2) {
-        PCalcMessageSQLite   pCalcMessageSQLite = new PCalcMessageSQLite(this);
-        try {
-            pCalcMessageSQLite.checkAndCopyDatabase();
-            pCalcMessageSQLite.openDataBase();
-            ContentValues values = new ContentValues();
-            values.put("mess_1", getDateNow());//подставляем дату
-            values.put("mess_2", mes_2);
-            pCalcMessageSQLite.Insert(values);
-        }
-        catch(SQLiteException e) {
-            e.printStackTrace();
-        }
-    }
-    @NonNull
-    private String getDateNow() {
-        String dt;
-        Date cal = (Date) Calendar.getInstance().getTime();
-        dt = cal.toLocaleString();
-        return  dt.toString();
-    }
-
 }

@@ -40,33 +40,9 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         // If the application is in the foreground handle both data and notification messages here.
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method be
-        insertSQLiteMessage(remoteMessage.getFrom(),remoteMessage.getNotification().getBody());
+        PCalcMessageSQLite.get(this).insertSQLiteMessage(remoteMessage.getFrom(),remoteMessage.getData().get("mess_1"));
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
-    }
-    // [END receive_message]
-    public void insertSQLiteMessage(String mes_1,String mes_2) {
-        pCalcMessageSQLite = new PCalcMessageSQLite(this);
-        try {
-            pCalcMessageSQLite.checkAndCopyDatabase();
-            pCalcMessageSQLite.openDataBase();
-            ContentValues values = new ContentValues();
-
-            values.put("mess_1", getDateNow());//подставляем дату
-            values.put("mess_2", mes_2);
-            pCalcMessageSQLite.Insert(values);
-        }
-        catch(SQLiteException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @NonNull
-    private String getDateNow() {
-        String dt;
-        Date cal = (Date) Calendar.getInstance().getTime();
-        dt = cal.toLocaleString();
-        return  dt.toString();
     }
     /**
      * Create and show a simple notification containing the received FCM message.

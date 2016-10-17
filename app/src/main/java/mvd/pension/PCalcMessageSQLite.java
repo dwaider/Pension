@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,11 +18,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Dmitry on 09.09.2016.
  */
 public class PCalcMessageSQLite extends SQLiteOpenHelper {
+    private static PCalcMessageSQLite pCalcMessageSQLite;
     private static String DB_NAME = "pension_bd.sqlite";
     private static String DB_PATH = "";
     private SQLiteDatabase myDataBase;
@@ -31,7 +35,18 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
     private static final String COLUMN_RUN_MESS_1 = "mess_1";
     private static final String COLUMN_RUN_MESS_2 = "mess_2";
 
-    public PCalcMessageSQLite(Context context) {
+    private OnInsertListern onInsertListern;
+
+    public static PCalcMessageSQLite get(Context context) {
+        if (pCalcMessageSQLite == null) {
+            pCalcMessageSQLite = new PCalcMessageSQLite(context);
+            pCalcMessageSQLite.checkAndCopyDatabase();
+            pCalcMessageSQLite.openDataBase();
+        }
+        return  pCalcMessageSQLite;
+    }
+
+    private PCalcMessageSQLite(Context context) {
         super(context, DB_NAME, null, VERSION);
         if (Build.VERSION.SDK_INT >= 17) {
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
@@ -41,7 +56,7 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
         this.myContext = context;
     }
 
-    public void openDataBase(){
+    private void openDataBase(){
         String myPath = DB_PATH + DB_NAME;
         myDataBase = SQLiteDatabase.openDatabase(myPath,null,SQLiteDatabase.OPEN_READWRITE);
     }
@@ -56,7 +71,7 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
 
     }
 
-    public void checkAndCopyDatabase(){
+    private void checkAndCopyDatabase(){
         boolean dbExist = checkDatbase();
         if (dbExist) {
             Log.d("TAG", "databases alreade exists");
@@ -82,6 +97,29 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
         myOutputStream.flush();
         myOutputStream.close();
         myInput.close();;
+    }
+
+    public void insertSQLiteMessage(String mes_1,String mes_2) {
+        try {
+            ContentValues values = new ContentValues();
+            values.put("mess_1", getDateNow());//подставляем дату
+            values.put("mess_2", mes_2);
+            pCalcMessageSQLite.Insert(values);
+            Cursor cursor = QueryData("select * from message");
+            cursor.moveToLast();
+            if (onInsertListern != null)  onInsertListern.OnInsertData(cursor);
+        }
+        catch(SQLiteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @NonNull
+    private String getDateNow() {
+        String dt;
+        Date cal = (Date) Calendar.getInstance().getTime();
+        dt = cal.toLocaleString();
+        return  dt.toString();
     }
 
     public int deleteId(int id) {
@@ -116,5 +154,9 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
             myDataBase.close();
         }
         super.close();
+    }
+
+    public void setOnInsertListern(OnInsertListern onInsertListern) {
+        this.onInsertListern = onInsertListern;
     }
 }

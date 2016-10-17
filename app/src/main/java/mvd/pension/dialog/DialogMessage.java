@@ -42,8 +42,8 @@ public class DialogMessage extends DialogFragment {
                 .setPositiveButton(R.string.dialog_button_delete, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        PCalcMessageSQLite v=  new PCalcMessageSQLite(getActivity());
-                        v.openDataBase();
+                        //PCalcMessageSQLite v=  new PCalcMessageSQLite(getActivity());
+                        PCalcMessageSQLite v = PCalcMessageSQLite.get(getActivity());
                         if (v.deleteId(mPosition) == 1 ) {//количество удаленных строк
                             sendResult(getActivity().RESULT_OK,mPosition);
                         }
