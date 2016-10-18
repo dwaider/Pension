@@ -29,6 +29,7 @@ import com.util.Purchase;
 
 import mvd.pension.Core.PCalc;
 import mvd.pension.FragmentActivity.PCalcPayFragment;
+import mvd.pension.FragmentActivity.PCalcPensHelpFragment;
 import mvd.pension.FragmentActivity.PCalcPensMessageFragment;
 import mvd.pension.FragmentActivity.PCalcPensTabPager;
 
@@ -300,6 +301,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 				fragment = new PCalcPensTabPager();
 				title = getString(R.string.menu_pensia_calc);
 			} else if (id == R.id.nav_spr) {
+				fragment = new PCalcPensHelpFragment();
 				title = getString(R.string.menu_spr_pensia);
 			} else if (id == R.id.nav_dopl) {
 				fragment = new PCalcPayFragment();
