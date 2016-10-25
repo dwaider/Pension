@@ -74,14 +74,14 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
     private void checkAndCopyDatabase(){
         boolean dbExist = checkDatbase();
         if (dbExist) {
+            Log.d("TAG", "databases alreade exists");
+        } else {
+            this.getReadableDatabase();
             try {
                 copyDatabases();
             } catch (IOException e) {
                 Log.d("TAG", "error copy data databases");
             }
-            Log.d("TAG", "databases alreade exists");
-        } else {
-            this.getReadableDatabase();
         }
     }
 
@@ -96,7 +96,7 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
         }
         myOutputStream.flush();
         myOutputStream.close();
-        myInput.close();;
+        myInput.close();
     }
 
     public void insertSQLiteMessage(String mes_1,String mes_2) {
@@ -117,7 +117,7 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
     @NonNull
     private String getDateNow() {
         String dt;
-        Date cal = (Date) Calendar.getInstance().getTime();
+        Date cal = Calendar.getInstance().getTime();
         dt = cal.toLocaleString();
         return  dt.toString();
     }
@@ -146,7 +146,7 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
         if (checkDB != null) {
             checkDB.close();
         }
-        return checkDB != null ? true : false;
+        return checkDB != null;
     }
 
     public synchronized void close() {

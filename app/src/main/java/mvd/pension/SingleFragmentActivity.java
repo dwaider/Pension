@@ -38,6 +38,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	private static final String TAG = "myLogsPayPension";
 
 	private String title;
+	private String mes = null; //проверка пришло ли новое сообшение от FireBase
 	//покупки в надбавках
 	IabHelper mHelper;
 	int RC_REQUEST = 10001;
@@ -99,7 +100,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 				if (result.isSuccess())
 				{
 					mHelper.queryInventoryAsync(mGotInventoryListener);
-				};
+				}
 				Log.d(TAG, result.getMessage());
 			}
 		});
@@ -201,11 +202,12 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pcalc_splash);
-		if (getIntent().getExtras() != null) {
-			for (String key : getIntent().getExtras().keySet()) {
-				String value = getIntent().getExtras().getString(key);
-			}
-		}
+		//обработка сообщений от Notification FireBase отправляется сообщение с параметром mess_1 в консоле FireBase
+		//нужно отправлять через расширенные параметры сообщения используя mess_1
+	//	mes = getIntent().getStringExtra("mess_1");
+	//	if (mes != null) {//если не пустой записываем в БД
+	//		PCalcMessageSQLite.get(this).insertSQLiteMessage("",mes);
+	//	}
 		pens = PCalc.get(this);
 		InstPay();
 		pens.setTestBay(new PCalc.testBay() {
@@ -257,10 +259,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 			.add(R.id.fragmentContainer, fragment)
 			.commit();
 		}
-		else
-		{
-//			if (f)
-		}
 	}
 
 
@@ -272,6 +270,18 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 			drawer.closeDrawer(GravityCompat.START);
 		} else {
 			super.onBackPressed();
+		}
+	}
+
+	@Override
+	public void onResume(){
+		if (getIntent().getExtras() != null) {
+			for (String key : getIntent().getExtras().keySet()) {
+				if (key == "mess_1") {
+					String value = getIntent().getExtras().getString(key);
+					PCalcMessageSQLite.get(this).insertSQLiteMessage("", value);
+				}
+			}
 		}
 	}
 

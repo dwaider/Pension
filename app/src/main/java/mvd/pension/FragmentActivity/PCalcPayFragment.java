@@ -42,7 +42,7 @@ public class PCalcPayFragment extends Fragment {
 			{
 				btPayAutoSaveNadbavk.setCompoundDrawablesWithIntrinsicBounds(R.drawable.unlock,0, 0, 0);
 				btPayAutoSaveNadbavk.setOnClickListener(null);
-			};
+			}
 /*		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 			ActionBar actionBar = getActivity().getActionBar();

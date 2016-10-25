@@ -191,7 +191,7 @@ public class PCalc{
 			if (pKlandVisl >= 20){
 				v = ((pKlandVisl - 20)*3)+50;
 				if (v > 85) v = 85;
-			};
+			}
 		}
 		else
 		{

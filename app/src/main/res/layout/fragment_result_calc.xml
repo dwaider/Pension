@@ -43,7 +43,7 @@
                         android:id="@+id/txDolOklad"
                         android:text="@string/const_zero"
                         android:layout_width="match_parent"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/tableRow5"
@@ -59,7 +59,7 @@
                     <TextView
                         android:id="@+id/txZvanOklad"
                         android:text="@string/const_zero"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
 
                 </TableRow>
 
@@ -76,7 +76,7 @@
                     <TextView
                         android:id="@+id/txVislProcNadb"
                         android:text="@string/const_zero"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/tableRow7"
@@ -90,7 +90,7 @@
                     <TextView
                         android:id="@+id/txSumDov"
                         android:text="@string/const_zero"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TextView
@@ -112,7 +112,7 @@
                     <TextView
                         android:id="@+id/txRaionKoeff"
                         android:text="@string/const_zero"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/TableRow02"
@@ -127,7 +127,7 @@
 
                     <TextView
                         android:id="@+id/txDenDovForIschislPensii"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/TableRow01"
@@ -141,7 +141,7 @@
 
                     <TextView
                         android:id="@+id/txRazmVProcent"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/TableRow06"
@@ -156,7 +156,7 @@
 
                     <TextView
                         android:id="@+id/txMinPensii"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/TableRow03"
@@ -171,7 +171,7 @@
 
                     <TextView
                         android:id="@+id/txRasmPensii"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TableRow android:id="@+id/TableRow05"
@@ -186,7 +186,7 @@
 
                     <TextView
                         android:id="@+id/txRazmUchetRaionKoeff"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </TableRow>
 
                 <TextView

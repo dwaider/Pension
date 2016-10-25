@@ -5,6 +5,6 @@ package mvd.pension;
  */
 
 public interface OnTapListener {
-    public void OnTapView(int position);
+    void OnTapView(int position);
 }
 

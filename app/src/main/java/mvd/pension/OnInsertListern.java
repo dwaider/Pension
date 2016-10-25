@@ -7,5 +7,5 @@ import android.database.Cursor;
  */
 
 public interface OnInsertListern {
-    public void OnInsertData(Cursor cursor);
+    void OnInsertData(Cursor cursor);
 }
