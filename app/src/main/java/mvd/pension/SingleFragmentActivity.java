@@ -37,6 +37,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	protected abstract Fragment createFragment();
 	private static final String TAG = "myLogsPayPension";
 
+	private String title;
 	//покупки в надбавках
 	IabHelper mHelper;
 	int RC_REQUEST = 10001;
@@ -245,14 +246,20 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		if (fragment == null) {
 				if (getIntent().getBooleanExtra("bol_mes",false) == true) {//получаем getIntent
 					fragment = new PCalcPensMessageFragment();
-				    getSupportActionBar().setTitle(getString(R.string.menu_message));
+					title = getString(R.string.menu_message);
+				    getSupportActionBar().setTitle(title);
 				} else {
 					fragment = createFragment();
-				    getSupportActionBar().setTitle(getString(R.string.menu_pensia_calc));
+					title = getString(R.string.menu_pensia_calc);
+				    getSupportActionBar().setTitle(title);
 				}
 			fm.beginTransaction()
 			.add(R.id.fragmentContainer, fragment)
 			.commit();
+		}
+		else
+		{
+//			if (f)
 		}
 	}
 
@@ -276,6 +283,20 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	}
 
 	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putString("name_title", title);
+	//	Log.d(LOG_TAG, "onSaveInstanceState");
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		title = savedInstanceState.getString("name_title");
+		getSupportActionBar().setTitle(title);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
@@ -296,7 +317,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		// Handle navigation view item clicks here.
 		Fragment fragment = null;
 		int id = item.getItemId();
-		String title = getString(R.string.app_name);
 			if (id == R.id.nav_calc_pens) {
 				fragment = new PCalcPensTabPager();
 				title = getString(R.string.menu_pensia_calc);
