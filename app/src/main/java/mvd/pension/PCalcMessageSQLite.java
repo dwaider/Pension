@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -77,26 +78,27 @@ public class PCalcMessageSQLite extends SQLiteOpenHelper {
             Log.d("TAG", "databases alreade exists");
         } else {
             this.getReadableDatabase();
+            try {
+                copyDatabases();
+            } catch (IOException e) {
+                Log.d("TAG", "error copy data databases");
+            }
         }
-        //try {
-           // copyDatabases();
-        //} catch (IOException e) {
-        //    Log.d("TAG", "error copy data databases");
-        //}
     }
 
     public void copyDatabases() throws IOException {
-        InputStream myInput = myContext.getAssets().open(DB_NAME);
+        //проверка есть ли уже файл с БД
         String outFileNew = DB_PATH + DB_NAME;
+        InputStream myInput = myContext.getAssets().open(DB_NAME);
         OutputStream myOutputStream = new FileOutputStream(outFileNew);
         byte[] buffer = new byte[1024];
         int length;
         while ((length = myInput.read(buffer)) > 0) {
-            myOutputStream.write(buffer,0,length);
+            myOutputStream.write(buffer, 0, length);
         }
         myOutputStream.flush();
         myOutputStream.close();
-        myInput.close();;
+        myInput.close();
     }
 
     public void insertSQLiteMessage(String mes_1,String mes_2) {
