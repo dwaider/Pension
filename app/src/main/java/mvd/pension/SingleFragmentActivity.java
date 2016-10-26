@@ -204,10 +204,10 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		setContentView(R.layout.activity_pcalc_splash);
 		//обработка сообщений от Notification FireBase отправляется сообщение с параметром mess_1 в консоле FireBase
 		//нужно отправлять через расширенные параметры сообщения используя mess_1
-	//	mes = getIntent().getStringExtra("mess_1");
-	//	if (mes != null) {//если не пустой записываем в БД
-	//		PCalcMessageSQLite.get(this).insertSQLiteMessage("",mes);
-	//	}
+		mes = getIntent().getStringExtra("mess_1");
+		if (mes != null) {//если не пустой записываем в БД
+			PCalcMessageSQLite.get(this).insertSQLiteMessage("",mes);
+		}
 		pens = PCalc.get(this);
 		InstPay();
 		pens.setTestBay(new PCalc.testBay() {
@@ -262,6 +262,15 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 	}
 
 
+	@Override
+	public void onResume(){
+		super.onResume();
+		mes = getIntent().getStringExtra("mess_1");
+		if (mes != null) {//если не пустой записываем в БД
+			PCalcMessageSQLite.get(this).insertSQLiteMessage("",mes);
+		}
+	}
+
 
 	@Override
 	public void onBackPressed() {
@@ -273,17 +282,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity implement
 		}
 	}
 
-	@Override
-	public void onResume(){
-		if (getIntent().getExtras() != null) {
-			for (String key : getIntent().getExtras().keySet()) {
-				if (key == "mess_1") {
-					String value = getIntent().getExtras().getString(key);
-					PCalcMessageSQLite.get(this).insertSQLiteMessage("", value);
-				}
-			}
-		}
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

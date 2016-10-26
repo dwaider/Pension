@@ -17,6 +17,7 @@
             android:paddingTop="16dp">
 
 
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -25,6 +26,7 @@
                     android:id="@+id/txSpravochnikVisl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="24dp"
                     android:text="@string/pcalc_den_dovi"/>
 
@@ -97,6 +99,7 @@
                     android:id="@+id/TextView01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="24dp"
                     android:text="@string/pcalc_rashet_pens" />
 
@@ -194,6 +197,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/pcalc_nadb"/>
 
                 <TableRow
@@ -209,7 +213,9 @@
                     android:id="@+id/txItog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
                     android:text="@string/pcalc_result_text"/>
 
             </TableLayout>

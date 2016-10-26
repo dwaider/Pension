@@ -20,12 +20,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/pcalc_oklad_zavan"
                 android:id="@+id/textView" />
             <Spinner
                 android:id="@+id/spPOklad_zvan"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:hint="@string/pcalc_oklad_zavan"
                 android:spinnerMode="dialog" />
 
@@ -39,6 +41,7 @@
                     android:id="@+id/edPOklad_dolg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:hint="@string/pcalc_oklad_dolg"
                     android:inputType="number"/>
 
@@ -55,6 +58,7 @@
                     android:id="@+id/edKalendVisl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:digits="0123456789"
                     android:hint="@string/pcalc_calend_visluga"
                     android:inputType="number"/>
@@ -65,6 +69,7 @@
                 android:id="@+id/chSmeshPens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/pcalc_raschet_visluga_trud"
                 android:layout_marginTop="24dp" />
 
@@ -78,6 +83,7 @@
                     android:id="@+id/edObsheTrud"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:digits="0123456789"
                     android:hint="@string/pcalc_visluga_trud"
                     android:inputType="number"/>
@@ -93,6 +99,7 @@
                     android:id="@+id/edPProcent_nadb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:digits="0123456789"
                     android:ems="10"
                     android:hint="@string/pcalc_visl_for_procent_nadb"
