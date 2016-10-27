@@ -19,7 +19,7 @@
 
 
             <TableLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -38,13 +38,15 @@
                     <TextView
                         android:id="@+id/txVal"
                         android:text="@string/pcalc_oklad_dolg"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txDolOklad"
                         android:text="@string/const_zero"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -56,13 +58,16 @@
                     <TextView
                         android:id="@+id/textView3"
                         android:text="@string/pcalc_oklad_zavan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txZvanOklad"
                         android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
-
                 </TableRow>
 
                 <TableRow android:id="@+id/tableRow6"
@@ -73,11 +78,15 @@
                     <TextView
                         android:id="@+id/txNameProcNadb"
                         android:text="@string/pcalc_nadb_visl_for_pensi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txVislProcNadb"
                         android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -88,10 +97,14 @@
                     <TextView
                         android:id="@+id/txView7"
                         android:text="@string/pcalc_sum_den_dovi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                     <TextView
                         android:id="@+id/txSumDov"
                         android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -110,11 +123,15 @@
 
                     <TextView
                         android:id="@+id/txNameRaionKoeff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/pcalc_nadb_raion_koeff"
                         android:layout_weight="1" />
                     <TextView
                         android:id="@+id/txRaionKoeff"
                         android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -126,10 +143,15 @@
                     <TextView
                         android:id="@+id/txDenDovForIsch"
                         android:text="@string/pcalc_sum_den_dov_for_isch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txDenDovForIschislPensii"
+                        android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -140,10 +162,15 @@
                     <TextView
                         android:id="@+id/TextView03"
                         android:text="@string/pcalc_razm_v_procent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txRazmVProcent"
+                        android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -155,10 +182,15 @@
                     <TextView
                         android:id="@+id/TextView06"
                         android:text="@string/pcalc_razm_min_pensii"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txMinPensii"
+                        android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -170,10 +202,15 @@
                     <TextView
                         android:id="@+id/TextView05"
                         android:text="@string/pcalc_razm_pensii"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txRasmPensii"
+                        android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -185,10 +222,15 @@
                     <TextView
                         android:id="@+id/TextView04"
                         android:text="@string/pcalc_razm_pensii_ural_koff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txRazmUchetRaionKoeff"
+                        android:text="@string/const_zero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -206,7 +248,8 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginLeft="24dp">
                     <TextView
-                        android:id="@+id/txNadbavka"/>
+                        android:id="@+id/txNadbavka"
+                        />
                 </TableRow>
 
                 <TextView
@@ -217,9 +260,7 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
                     android:text="@string/pcalc_result_text"/>
-
             </TableLayout>
-
         </LinearLayout>
     </ScrollView>
 
