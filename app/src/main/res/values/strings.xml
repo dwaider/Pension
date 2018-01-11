@@ -25,7 +25,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
+    <string name="pcalc_date_raschet">Дата расчета ден. довольствия</string>
     <string name="pcalc_oklad_zavan">Оклад по званию</string>
     <string name="pcalc_oklad_dolg">Оклад по должности</string>
     <string name="pcalc_visl_for_procent_nadb">Выслуга лет для % надбавки</string>
@@ -87,6 +87,34 @@
         <item>Размер пенсии с учетом рай.коэф</item>
     </string-array>
 
+    <string-array name="pcalc_date_den_dov">
+        <item>до 01.01.2018 года</item>
+        <item>с 01.01.2018 года</item>
+    </string-array>
+
+    <string-array name="pcalc_ar_data_zvan_0118">
+        <item>рядовой;5200</item>
+        <item>курсант;5200</item>
+        <item>ефрейтор;5720</item>
+        <item>младший сержант;6240</item>
+        <item>сержант;6760</item>
+        <item>старший сержант;7280</item>
+        <item>старшина;7800</item>
+        <item>прапорщик;8320</item>
+        <item>старший прапорщик;8840</item>
+        <item>младший лейтенант;9880</item>
+        <item>лейтенант;10400</item>
+        <item>старший лейтенант;10920</item>
+        <item>капитан;11440</item>
+        <item>майор;11960</item>
+        <item>подполковник;12480</item>
+        <item>полковник;13520</item>
+        <item>генерал-майор;20800</item>
+        <item>генерал-лейтенант;22880</item>
+        <item>генерал-полковник;26000</item>
+        <item>генерал армии;28080</item>
+    </string-array>
+
 
     <string-array name="pcalc_ar_data_zvan">
         <item>рядовой;5000</item>
@@ -111,6 +139,119 @@
         <item>генерал армии;27000</item>
     </string-array>
 
+    <string-array name="pcalc_ar_data_oklad">
+        <item>8 000</item>
+        <item>8 500</item>
+        <item>9 000</item>
+        <item>9 500</item>
+        <item>10 000</item>
+        <item>11 000</item>
+        <item>12 000</item>
+        <item>13 000</item>
+        <item>15 000</item>
+        <item>16 000</item>
+        <item>17 000</item>
+        <item>17 500</item>
+        <item>18 000</item>
+        <item>20 000</item>
+        <item>20 500</item>
+        <item>21 000</item>
+        <item>21 500</item>
+        <item>22 000</item>
+        <item>22 500</item>
+        <item>23 000</item>
+        <item>23 500</item>
+        <item>24 000</item>
+        <item>24 500</item>
+        <item>25 000</item>
+        <item>25 500</item>
+        <item>26 000</item>
+        <item>26 500</item>
+        <item>27 000</item>
+        <item>27 500</item>
+        <item>28 000</item>
+        <item>28 500</item>
+        <item>29 000</item>
+        <item>29 500</item>
+        <item>30 000</item>
+        <item>30 500</item>
+        <item>31 000</item>
+        <item>31 500</item>
+        <item>32 000</item>
+        <item>32 500</item>
+        <item>33 000</item>
+        <item>33 500</item>
+        <item>34 000</item>
+        <item>34 500</item>
+        <item>35 000</item>
+        <item>35 500</item>
+        <item>36 000</item>
+        <item>36 500</item>
+        <item>37 000</item>
+        <item>37 500</item>
+        <item>38 000</item>
+        <item>40 000</item>
+        <item>42 000</item>
+        <item>44 000</item>
+        <item>45 000</item>
+    </string-array>
+
+    <string-array name="pcalc_ar_data_oklad_0118">
+        <item>8 320</item>
+        <item>8 840</item>
+        <item>9 360</item>
+        <item>9 880</item>
+        <item>10 400</item>
+        <item>11 440</item>
+        <item>12 480</item>
+        <item>13 520</item>
+        <item>15 600</item>
+        <item>16 640</item>
+        <item>17 680</item>
+        <item>18 200</item>
+        <item>18 720</item>
+        <item>20 800</item>
+        <item>21 320</item>
+        <item>21 840</item>
+        <item>22 360</item>
+        <item>22 880</item>
+        <item>23 400</item>
+        <item>23 920</item>
+        <item>24 440</item>
+        <item>24 960</item>
+        <item>25 480</item>
+        <item>26 000</item>
+        <item>26 520</item>
+        <item>27 040</item>
+        <item>27 560</item>
+        <item>28 080</item>
+        <item>28 600</item>
+        <item>29 120</item>
+        <item>29 640</item>
+        <item>30 160</item>
+        <item>30 680</item>
+        <item>31 200</item>
+        <item>31 720</item>
+        <item>32 240</item>
+        <item>32 760</item>
+        <item>33 280</item>
+        <item>33 800</item>
+        <item>34 320</item>
+        <item>34 840</item>
+        <item>35 360</item>
+        <item>35 880</item>
+        <item>36 400</item>
+        <item>36 920</item>
+        <item>37 440</item>
+        <item>37 960</item>
+        <item>38 480</item>
+        <item>39 000</item>
+        <item>39 520</item>
+        <item>41 600</item>
+        <item>43 680</item>
+        <item>45 760</item>
+        <item>46 800</item>
+    </string-array>
 
     <string-array name="pcalc_ar_data_pocent_for_pensi">
         <item>c 01.02.2017 года;72.23;4959.85</item>

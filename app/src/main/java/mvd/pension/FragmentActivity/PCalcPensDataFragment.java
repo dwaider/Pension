@@ -34,7 +34,7 @@ public class PCalcPensDataFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private Spinner spOkladZvan;
-    private EditText pOkladDolg;
+    private Spinner pOkladDolg;
     private EditText pProcentNadbv;
     private EditText pKalendVisl;
     private CheckBox chSmeshPens;
@@ -81,28 +81,28 @@ public class PCalcPensDataFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_pens_calc, container, false);
-        pOkladDolg = (EditText)v.findViewById(R.id.edPOklad_dolg);
-        pProcentNadbv = (EditText)v.findViewById(R.id.edPProcent_nadb);
-        pKalendVisl = (EditText)v.findViewById(R.id.edKalendVisl);
-        pObsheTrudVisl = (EditText)v.findViewById(R.id.edObsheTrud);
+        pOkladDolg = v.findViewById(R.id.spPOklad_dolg);
+        pProcentNadbv = v.findViewById(R.id.edPProcent_nadb);
+        pKalendVisl = v.findViewById(R.id.edKalendVisl);
+        pObsheTrudVisl = v.findViewById(R.id.edObsheTrud);
         pObsheTrudVisl.setEnabled(pens.ispSmeshPens());
         //расчет по смешанному стажу
-        chSmeshPens = (CheckBox)v.findViewById(R.id.chSmeshPens);
-        chSmeshPens.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                                   @Override
-                                                   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                          pens.setpSmeshPens(isChecked);
-                                                          pObsheTrudVisl.setEnabled(pens.ispSmeshPens());
-                                                   }
-                                               });
+        chSmeshPens = v.findViewById(R.id.chSmeshPens);
+        chSmeshPens.setOnCheckedChangeListener((buttonView, isChecked) -> {
+               pens.setpSmeshPens(isChecked);
+               pObsheTrudVisl.setEnabled(pens.ispSmeshPens());
+        });
 
         chSmeshPens.setChecked(pens.ispSmeshPens());
-        spOkladZvan = (Spinner)v.findViewById(R.id.spPOklad_zvan);
+        spOkladZvan = v.findViewById(R.id.spPOklad_zvan);
         // адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpZvanOklad());
+        ArrayAdapter<String> adapterDolg = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpOkladDolgs());
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterDolg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spOkladZvan.setAdapter(adapter);
+        pOkladDolg.setAdapter(adapterDolg);
         //загрузка сохраненных данных
         spOkladZvan.setSelection(adapter.getPosition(pens.getpOkladZvanString()));
         spOkladZvan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -121,12 +121,12 @@ public class PCalcPensDataFragment extends Fragment {
             }
         });
 
-        if (pens.getpOkladDolg() != 0) pOkladDolg.setText(String.valueOf((int)pens.getpOkladDolg()));
+        //if (pens.getpOkladDolg() != 0) pOkladDolg.setText(String.valueOf((int)pens.getpOkladDolg()));
         if (pens.getVislLetPoln() != 0) pProcentNadbv.setText(String.valueOf((int)pens.getVislLetPoln()));
         if (pens.getpKlandVisl() != 0) pKalendVisl.setText(String.valueOf((int)pens.getpKlandVisl()));
         if (pens.getpObsheTrudVisl() != 0) pObsheTrudVisl.setText(String.valueOf((int)pens.getpObsheTrudVisl()));
 
-        pOkladDolg.addTextChangedListener(new GenericTextWatcher(pOkladDolg));
+       // pOkladDolg.addTextChangedListener(new GenericTextWatcher(pOkladDolg));
         pProcentNadbv.addTextChangedListener(new GenericTextWatcher(pProcentNadbv));
         pKalendVisl.addTextChangedListener(new GenericTextWatcher(pKalendVisl));
         pObsheTrudVisl.addTextChangedListener(new GenericTextWatcher(pObsheTrudVisl));
@@ -182,9 +182,9 @@ public class PCalcPensDataFragment extends Fragment {
             try {
                 Integer TextToFloat = Integer.parseInt(ch.toString());
                 switch(view.getId()){
-                    case R.id.edPOklad_dolg:
-                        pens.setpOkladDolg(TextToFloat);
-                        break;
+                    //case R.id.edPOklad_dolg:
+                    //    pens.setpOkladDolg(TextToFloat);
+                    //    break;
                     case R.id.edPProcent_nadb:
                         pens.setpVislLet(TextToFloat);
                         break;

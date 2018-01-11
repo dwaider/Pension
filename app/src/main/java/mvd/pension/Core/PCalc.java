@@ -36,6 +36,7 @@ public class PCalc{
 	private String[] dataPocentForPensi; 
 	private String[] dataKolIgdevency;
 	private String[] dataZvanOklad;
+	private String[] dataDolgOklad;
 	
 	private static PCalc pPens; 
 	private UUID pId;
@@ -89,6 +90,7 @@ public class PCalc{
 	private PCalc(Context context) {
 		pId = UUID.randomUUID();
 		this.context = context;
+		dataDolgOklad = context.getResources().getStringArray(R.array.pcalc_ar_data_oklad);
 		dataZvanOklad = context.getResources().getStringArray(R.array.pcalc_ar_data_zvan);
 		dataPocentRaion = context.getResources().getStringArray(R.array.pcalc_ar_data_pocent_raion);
 		dataPocentForPensi = context.getResources().getStringArray(R.array.pcalc_ar_data_pocent_for_pensi);
@@ -140,7 +142,10 @@ public class PCalc{
 	public String[] getpZvanOklad() {
 		return dataZvanOklad;
 	}
-	
+
+	public String[] getpOkladDolgs() {
+		return dataDolgOklad;
+	}
 	public void setpZvanOklad(int position) {
 		pOkladZvaniString = dataZvanOklad[position].toString();
         String tStr = pOkladZvaniString;
