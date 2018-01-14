@@ -37,7 +37,8 @@ public class PCalc{
 	private String[] dataKolIgdevency;
 	private String[] dataZvanOklad;
 	private String[] dataDolgOklad;
-	
+	private String[] dataRaschetaDenDov;
+
 	private static PCalc pPens; 
 	private UUID pId;
 	private Context context;
@@ -95,8 +96,20 @@ public class PCalc{
 		dataPocentRaion = context.getResources().getStringArray(R.array.pcalc_ar_data_pocent_raion);
 		dataPocentForPensi = context.getResources().getStringArray(R.array.pcalc_ar_data_pocent_for_pensi);
 		dataKolIgdevency = context.getResources().getStringArray(R.array.pcalc_ar_data_kol_igd);
+		dataRaschetaDenDov = context.getResources().getStringArray(R.array.pcalc_date_den_dov);
 		RASM_MIN_PENS = Float.valueOf(context.getResources().getString(R.string.pcalc_nadb_min_pens));
 		nNadbavka = new SparseArray<Float>();
+	}
+
+	public void setDenDov(int position) {
+		if (position == 0) {
+			dataDolgOklad = context.getResources().getStringArray(R.array.pcalc_ar_data_oklad);
+			dataZvanOklad = context.getResources().getStringArray(R.array.pcalc_ar_data_zvan);
+		}
+		if (position == 1) {
+			dataDolgOklad = context.getResources().getStringArray(R.array.pcalc_ar_data_oklad_0118);
+			dataZvanOklad = context.getResources().getStringArray(R.array.pcalc_ar_data_zvan_0118);
+		}
 	}
 	
 	
@@ -141,6 +154,10 @@ public class PCalc{
 
 	public String[] getpZvanOklad() {
 		return dataZvanOklad;
+	}
+
+	public String[] getpRaschetDenDov(){
+		return dataRaschetaDenDov;
 	}
 
 	public String[] getpOkladDolgs() {
@@ -557,9 +574,7 @@ public class PCalc{
 		}
 	}
 
-
-	
-	//*****************************************************************************	
+	//*****************************************************************************
   	public interface ChangeParam {
     		   void onChangeParam();
 	}

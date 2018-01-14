@@ -35,10 +35,13 @@ public class PCalcPensDataFragment extends Fragment {
 
     private Spinner spOkladZvan;
     private Spinner pOkladDolg;
+    private Spinner spDateRaschet;
     private EditText pProcentNadbv;
     private EditText pKalendVisl;
     private CheckBox chSmeshPens;
     private EditText pObsheTrudVisl;
+    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapterDolg;
 
     private PCalc pens;
 
@@ -95,14 +98,28 @@ public class PCalcPensDataFragment extends Fragment {
 
         chSmeshPens.setChecked(pens.ispSmeshPens());
         spOkladZvan = v.findViewById(R.id.spPOklad_zvan);
-        // адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpZvanOklad());
-        ArrayAdapter<String> adapterDolg = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpOkladDolgs());
+        spDateRaschet = v.findViewById(R.id.spDateRaschet);
+        ArrayAdapter<String> adapterDate = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpRaschetDenDov());
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapterDolg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spOkladZvan.setAdapter(adapter);
-        pOkladDolg.setAdapter(adapterDolg);
+        spDateRaschet.setAdapter(adapterDate);
+        spDateRaschet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                pens.setDenDov(position);
+                // адаптер
+                adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpZvanOklad());
+                adapterDolg = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpOkladDolgs());
+                spOkladZvan.setAdapter(adapter);
+                pOkladDolg.setAdapter(adapterDolg);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpZvanOklad());
+        adapterDolg = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, pens.getpOkladDolgs());
         //загрузка сохраненных данных
         spOkladZvan.setSelection(adapter.getPosition(pens.getpOkladZvanString()));
         spOkladZvan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
